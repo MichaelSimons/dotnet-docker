@@ -4,7 +4,7 @@ param(
     [string]$Manifest='manifest.json',
     [string]$ReadMeTemplate='./scripts/ReadmeTagsDocumentationTemplate.md',
     [string]$TagsTemplate='./scripts/TagsDocumentationTemplate.md',
-    [string]$ImageBuilderImageName='microsoft/dotnet-buildtools-prereqs:image-builder-debian-20181030184558'
+    [string]$ImageBuilderImageName='image-builder'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -72,7 +72,7 @@ function GenerateDoc {
     }
 }
 
-Exec "docker pull $ImageBuilderImageName"
+# Exec "docker pull $ImageBuilderImageName"
 
 GenerateDoc $ReadMeTemplate README.md -SkipValidation
 

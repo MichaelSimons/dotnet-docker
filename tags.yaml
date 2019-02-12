@@ -1,0 +1,589 @@
+repos:
+  - repoName: public/mcr.microsoft.com/dotnet/core-nightly/runtime-deps
+    tagGroups:
+    - tags: [ 1.0.14-jessie, 1.0-jessie, 1.0.14, 1.0 ]
+      osVersion: Debian 8
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/1.0/runtime-deps/jessie/amd64/Dockerfile
+    - tags: [ 1.1.11-stretch, 1.1-stretch ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/1.1/runtime-deps/stretch/amd64/Dockerfile
+    - tags: [ 2.1.8-stretch-slim, 2.1-stretch-slim, 2.2.2-stretch-slim, 2.2-stretch-slim, 2.1.8, 2.1, 2.2.2, 2.2, latest ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime-deps/stretch-slim/amd64/Dockerfile
+    - tags: [ 2.1.8-alpine3.8, 2.1-alpine3.8, 2.2.2-alpine3.8, 2.2-alpine3.8, 2.1.8-alpine, 2.1-alpine, 2.2.2-alpine, 2.2-alpine ]
+      osVersion: Alpine 3.8
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime-deps/alpine3.8/amd64/Dockerfile
+    - tags: [ 2.1.8-alpine3.7, 2.1-alpine3.7 ]
+      osVersion: Alpine 3.7
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime-deps/alpine3.7/amd64/Dockerfile
+    - tags: [ 2.1.8-bionic, 2.1-bionic, 2.2.2-bionic, 2.2-bionic ]
+      osVersion: Ubuntu 18.04
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime-deps/bionic/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-stretch-slim, 3.0-stretch-slim, 3.0.0-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime-deps/stretch-slim/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-alpine3.9, 3.0-alpine3.9, 3.0.0-preview-alpine, 3.0-alpine ]
+      osVersion: Alpine 3.9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime-deps/alpine3.9/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-bionic, 3.0-bionic ]
+      osVersion: Ubuntu 18.04
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime-deps/bionic/amd64/Dockerfile
+    - tags: [ 2.1.8-stretch-slim-arm32v7, 2.1-stretch-slim-arm32v7, 2.2.2-stretch-slim-arm32v7, 2.2-stretch-slim-arm32v7, 2.1.8, 2.1, 2.2.2, 2.2, latest ]
+      osVersion: Debian 9
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime-deps/stretch-slim/arm32v7/Dockerfile
+    - tags: [ 2.1.8-bionic-arm32v7, 2.1-bionic-arm32v7, 2.2.2-bionic-arm32v7, 2.2-bionic-arm32v7 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime-deps/bionic/arm32v7/Dockerfile
+    - tags: [ 3.0.0-preview-stretch-slim-arm32v7, 3.0-stretch-slim-arm32v7, 3.0.0-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime-deps/stretch-slim/arm32v7/Dockerfile
+    - tags: [ 3.0.0-preview-bionic-arm32v7, 3.0-bionic-arm32v7 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime-deps/bionic/arm32v7/Dockerfile
+    - tags: [ 3.0.0-preview-stretch-slim-arm64v8, 3.0-stretch-slim-arm64v8, 3.0.0-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: arm64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime-deps/stretch-slim/arm64v8/Dockerfile
+    - tags: [ 3.0.0-preview-bionic-arm64v8, 3.0-bionic-arm64v8 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime-deps/bionic/arm64v8/Dockerfile
+  - repoName: public/mcr.microsoft.com/dotnet/core-nightly/runtime
+    tagGroups:
+    - tags: [ 1.0.14-jessie, 1.0-jessie, 1.0.14, 1.0 ]
+      osVersion: Debian 8
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/1.0/runtime/jessie/amd64/Dockerfile
+    - tags: [ 1.1.11-jessie, 1.1-jessie, 1.1.11, 1.1 ]
+      osVersion: Debian 8
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/1.1/runtime/jessie/amd64/Dockerfile
+    - tags: [ 1.1.11-stretch, 1.1-stretch ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/1.1/runtime/stretch/amd64/Dockerfile
+    - tags: [ 2.1.8-stretch-slim, 2.1-stretch-slim, 2.1.8, 2.1 ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime/stretch-slim/amd64/Dockerfile
+    - tags: [ 2.1.8-alpine3.8, 2.1-alpine3.8, 2.1.8-alpine, 2.1-alpine ]
+      osVersion: Alpine 3.8
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime/alpine3.8/amd64/Dockerfile
+    - tags: [ 2.1.8-alpine3.7, 2.1-alpine3.7 ]
+      osVersion: Alpine 3.7
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime/alpine3.7/amd64/Dockerfile
+    - tags: [ 2.1.8-bionic, 2.1-bionic ]
+      osVersion: Ubuntu 18.04
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime/bionic/amd64/Dockerfile
+    - tags: [ 2.2.2-stretch-slim, 2.2-stretch-slim, 2.2.2, 2.2, latest ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/runtime/stretch-slim/amd64/Dockerfile
+    - tags: [ 2.2.2-alpine3.8, 2.2-alpine3.8, 2.2.2-alpine, 2.2-alpine ]
+      osVersion: Alpine 3.8
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/runtime/alpine3.8/amd64/Dockerfile
+    - tags: [ 2.2.2-bionic, 2.2-bionic ]
+      osVersion: Ubuntu 18.04
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/runtime/bionic/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-stretch-slim, 3.0-stretch-slim, 3.0.0-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime/stretch-slim/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-alpine3.9, 3.0-alpine3.9, 3.0.0-preview-alpine, 3.0-alpine ]
+      osVersion: Alpine 3.9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime/alpine3.9/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-bionic, 3.0-bionic ]
+      osVersion: Ubuntu 18.04
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime/bionic/amd64/Dockerfile
+    - tags: [ 2.1.8-stretch-slim-arm32v7, 2.1-stretch-slim-arm32v7, 2.1.8, 2.1 ]
+      osVersion: Debian 9
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime/stretch-slim/arm32v7/Dockerfile
+    - tags: [ 2.1.8-bionic-arm32v7, 2.1-bionic-arm32v7 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime/bionic/arm32v7/Dockerfile
+    - tags: [ 2.2.2-stretch-slim-arm32v7, 2.2-stretch-slim-arm32v7, 2.2.2, 2.2, latest ]
+      osVersion: Debian 9
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/runtime/stretch-slim/arm32v7/Dockerfile
+    - tags: [ 2.2.2-bionic-arm32v7, 2.2-bionic-arm32v7 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/runtime/bionic/arm32v7/Dockerfile
+    - tags: [ 3.0.0-preview-stretch-slim-arm32v7, 3.0-stretch-slim-arm32v7, 3.0.0-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime/stretch-slim/arm32v7/Dockerfile
+    - tags: [ 3.0.0-preview-bionic-arm32v7, 3.0-bionic-arm32v7 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime/bionic/arm32v7/Dockerfile
+    - tags: [ 3.0.0-preview-stretch-slim-arm64v8, 3.0-stretch-slim-arm64v8, 3.0.0-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: arm64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime/stretch-slim/arm64v8/Dockerfile
+    - tags: [ 3.0.0-preview-bionic-arm64v8, 3.0-bionic-arm64v8 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime/bionic/arm64v8/Dockerfile
+    - tags: [ 2.1.8-nanoserver-1809, 2.1-nanoserver-1809, 2.1.8, 2.1 ]
+      osVersion: Windows Server, version 1809
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime/nanoserver-1809/amd64/Dockerfile
+    - tags: [ 2.2.2-nanoserver-1809, 2.2-nanoserver-1809, 2.2.2, 2.2, latest ]
+      osVersion: Windows Server, version 1809
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/runtime/nanoserver-1809/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-nanoserver-1809, 3.0-nanoserver-1809, 3.0.0-preview, 3.0 ]
+      osVersion: Windows Server, version 1809
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime/nanoserver-1809/amd64/Dockerfile
+    - tags: [ 2.1.8-nanoserver-1803, 2.1-nanoserver-1803, 2.1.8, 2.1 ]
+      osVersion: Windows Server, version 1803
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime/nanoserver-1803/amd64/Dockerfile
+    - tags: [ 2.2.2-nanoserver-1803, 2.2-nanoserver-1803, 2.2.2, 2.2, latest ]
+      osVersion: Windows Server, version 1803
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/runtime/nanoserver-1803/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-nanoserver-1803, 3.0-nanoserver-1803, 3.0.0-preview, 3.0 ]
+      osVersion: Windows Server, version 1803
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime/nanoserver-1803/amd64/Dockerfile
+    - tags: [ 2.1.8-nanoserver-1709, 2.1-nanoserver-1709, 2.1.8, 2.1 ]
+      osVersion: Windows Server, version 1709
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime/nanoserver-1709/amd64/Dockerfile
+    - tags: [ 2.2.2-nanoserver-1709, 2.2-nanoserver-1709, 2.2.2, 2.2, latest ]
+      osVersion: Windows Server, version 1709
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/runtime/nanoserver-1709/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-nanoserver-1709, 3.0-nanoserver-1709, 3.0.0-preview, 3.0 ]
+      osVersion: Windows Server, version 1709
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime/nanoserver-1709/amd64/Dockerfile
+    - tags: [ 1.0.14-nanoserver-sac2016, 1.0-nanoserver-sac2016, 1.0.14, 1.0 ]
+      osVersion: Windows Server 2016 SAC
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/1.0/runtime/nanoserver-sac2016/amd64/Dockerfile
+    - tags: [ 1.1.11-nanoserver-sac2016, 1.1-nanoserver-sac2016, 1.1.11, 1.1 ]
+      osVersion: Windows Server 2016 SAC
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/1.1/runtime/nanoserver-sac2016/amd64/Dockerfile
+    - tags: [ 2.1.8-nanoserver-sac2016, 2.1-nanoserver-sac2016, 2.1.8, 2.1 ]
+      osVersion: Windows Server 2016 SAC
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/runtime/nanoserver-sac2016/amd64/Dockerfile
+    - tags: [ 2.2.2-nanoserver-sac2016, 2.2-nanoserver-sac2016, 2.2.2, 2.2, latest ]
+      osVersion: Windows Server 2016 SAC
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/runtime/nanoserver-sac2016/amd64/Dockerfile
+    - tags: [ 2.2.2-nanoserver-1809-arm32, 2.2-nanoserver-1809-arm32, 2.2.2, 2.2, latest ]
+      osVersion: Windows Server, version 1809
+      architecture: arm
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/runtime/nanoserver-1809/arm32/Dockerfile
+    - tags: [ 3.0.0-preview-nanoserver-1809-arm32, 3.0-nanoserver-1809-arm32, 3.0.0-preview, 3.0 ]
+      osVersion: Windows Server, version 1809
+      architecture: arm
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/runtime/nanoserver-1809/arm32/Dockerfile
+  - repoName: public/mcr.microsoft.com/dotnet/core-nightly/aspnet
+    tagGroups:
+    - tags: [ 2.1.8-stretch-slim, 2.1-stretch-slim, 2.1.8, 2.1 ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/aspnet/stretch-slim/amd64/Dockerfile
+    - tags: [ 2.1.8-alpine3.8, 2.1-alpine3.8, 2.1.8-alpine, 2.1-alpine ]
+      osVersion: Alpine 3.8
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/aspnet/alpine3.8/amd64/Dockerfile
+    - tags: [ 2.1.8-alpine3.7, 2.1-alpine3.7 ]
+      osVersion: Alpine 3.7
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/aspnet/alpine3.7/amd64/Dockerfile
+    - tags: [ 2.1.8-bionic, 2.1-bionic ]
+      osVersion: Ubuntu 18.04
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/aspnet/bionic/amd64/Dockerfile
+    - tags: [ 2.2.2-stretch-slim, 2.2-stretch-slim, 2.2.2, 2.2, latest ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/aspnet/stretch-slim/amd64/Dockerfile
+    - tags: [ 2.2.2-alpine3.8, 2.2-alpine3.8, 2.2.2-alpine, 2.2-alpine ]
+      osVersion: Alpine 3.8
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/aspnet/alpine3.8/amd64/Dockerfile
+    - tags: [ 2.2.2-bionic, 2.2-bionic ]
+      osVersion: Ubuntu 18.04
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/aspnet/bionic/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-stretch-slim, 3.0-stretch-slim, 3.0.0-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/aspnet/stretch-slim/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-alpine3.9, 3.0-alpine3.9, 3.0.0-preview-alpine, 3.0-alpine ]
+      osVersion: Alpine 3.9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/aspnet/alpine3.9/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-bionic, 3.0-bionic ]
+      osVersion: Ubuntu 18.04
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/aspnet/bionic/amd64/Dockerfile
+    - tags: [ 2.1.8-stretch-slim-arm32v7, 2.1-stretch-slim-arm32v7, 2.1.8, 2.1 ]
+      osVersion: Debian 9
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/aspnet/stretch-slim/arm32v7/Dockerfile
+    - tags: [ 2.1.8-bionic-arm32v7, 2.1-bionic-arm32v7 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/aspnet/bionic/arm32v7/Dockerfile
+    - tags: [ 2.2.2-stretch-slim-arm32v7, 2.2-stretch-slim-arm32v7, 2.2.2, 2.2, latest ]
+      osVersion: Debian 9
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/aspnet/stretch-slim/arm32v7/Dockerfile
+    - tags: [ 2.2.2-bionic-arm32v7, 2.2-bionic-arm32v7 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/aspnet/bionic/arm32v7/Dockerfile
+    - tags: [ 3.0.0-preview-stretch-slim-arm32v7, 3.0-stretch-slim-arm32v7, 3.0.0-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/aspnet/stretch-slim/arm32v7/Dockerfile
+    - tags: [ 3.0.0-preview-bionic-arm32v7, 3.0-bionic-arm32v7 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/aspnet/bionic/arm32v7/Dockerfile
+    - tags: [ 3.0.0-preview-stretch-slim-arm64v8, 3.0-stretch-slim-arm64v8, 3.0.0-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: arm64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/aspnet/stretch-slim/arm64v8/Dockerfile
+    - tags: [ 3.0.0-preview-bionic-arm64v8, 3.0-bionic-arm64v8 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/aspnet/bionic/arm64v8/Dockerfile
+    - tags: [ 2.1.8-nanoserver-1809, 2.1-nanoserver-1809, 2.1.8, 2.1 ]
+      osVersion: Windows Server, version 1809
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/aspnet/nanoserver-1809/amd64/Dockerfile
+    - tags: [ 2.2.2-nanoserver-1809, 2.2-nanoserver-1809, 2.2.2, 2.2, latest ]
+      osVersion: Windows Server, version 1809
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/aspnet/nanoserver-1809/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-nanoserver-1809, 3.0-nanoserver-1809, 3.0.0-preview, 3.0 ]
+      osVersion: Windows Server, version 1809
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/aspnet/nanoserver-1809/amd64/Dockerfile
+    - tags: [ 2.1.8-nanoserver-1803, 2.1-nanoserver-1803, 2.1.8, 2.1 ]
+      osVersion: Windows Server, version 1803
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/aspnet/nanoserver-1803/amd64/Dockerfile
+    - tags: [ 2.2.2-nanoserver-1803, 2.2-nanoserver-1803, 2.2.2, 2.2, latest ]
+      osVersion: Windows Server, version 1803
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/aspnet/nanoserver-1803/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-nanoserver-1803, 3.0-nanoserver-1803, 3.0.0-preview, 3.0 ]
+      osVersion: Windows Server, version 1803
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/aspnet/nanoserver-1803/amd64/Dockerfile
+    - tags: [ 2.1.8-nanoserver-1709, 2.1-nanoserver-1709, 2.1.8, 2.1 ]
+      osVersion: Windows Server, version 1709
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/aspnet/nanoserver-1709/amd64/Dockerfile
+    - tags: [ 2.2.2-nanoserver-1709, 2.2-nanoserver-1709, 2.2.2, 2.2, latest ]
+      osVersion: Windows Server, version 1709
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/aspnet/nanoserver-1709/amd64/Dockerfile
+    - tags: [ 3.0.0-preview-nanoserver-1709, 3.0-nanoserver-1709, 3.0.0-preview, 3.0 ]
+      osVersion: Windows Server, version 1709
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/aspnet/nanoserver-1709/amd64/Dockerfile
+    - tags: [ 2.1.8-nanoserver-sac2016, 2.1-nanoserver-sac2016, 2.1.8, 2.1 ]
+      osVersion: Windows Server 2016 SAC
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/aspnet/nanoserver-sac2016/amd64/Dockerfile
+    - tags: [ 2.2.2-nanoserver-sac2016, 2.2-nanoserver-sac2016, 2.2.2, 2.2, latest ]
+      osVersion: Windows Server 2016 SAC
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/aspnet/nanoserver-sac2016/amd64/Dockerfile
+    - tags: [ 2.2.2-nanoserver-1809-arm32, 2.2-nanoserver-1809-arm32, 2.2.2, 2.2, latest ]
+      osVersion: Windows Server, version 1809
+      architecture: arm
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/aspnet/nanoserver-1809/arm32/Dockerfile
+    - tags: [ 3.0.0-preview-nanoserver-1809-arm32, 3.0-nanoserver-1809-arm32, 3.0.0-preview, 3.0 ]
+      osVersion: Windows Server, version 1809
+      architecture: arm
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/aspnet/nanoserver-1809/arm32/Dockerfile
+  - repoName: public/mcr.microsoft.com/dotnet/core-nightly/sdk
+    tagGroups:
+    - tags: [ 1.1.12-jessie, 1.1-jessie, 1.1.12, 1.1 ]
+      osVersion: Debian 8
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/1.1/sdk/jessie/amd64/Dockerfile
+    - tags: [ 1.1.12-stretch, 1.1-stretch ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/1.1/sdk/stretch/amd64/Dockerfile
+    - tags: [ 2.1.504-stretch, 2.1-stretch, 2.1.504, 2.1 ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/sdk/stretch/amd64/Dockerfile
+    - tags: [ 2.1.504-alpine3.8, 2.1-alpine3.8, 2.1.504-alpine, 2.1-alpine ]
+      osVersion: Alpine 3.8
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/sdk/alpine3.8/amd64/Dockerfile
+    - tags: [ 2.1.504-alpine3.7, 2.1-alpine3.7 ]
+      osVersion: Alpine 3.7
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/sdk/alpine3.7/amd64/Dockerfile
+    - tags: [ 2.1.504-bionic, 2.1-bionic ]
+      osVersion: Ubuntu 18.04
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/sdk/bionic/amd64/Dockerfile
+    - tags: [ 2.2.104-stretch, 2.2-stretch, 2.2.104, 2.2, latest ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/sdk/stretch/amd64/Dockerfile
+    - tags: [ 2.2.104-alpine3.8, 2.2-alpine3.8, 2.2.104-alpine, 2.2-alpine ]
+      osVersion: Alpine 3.8
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/sdk/alpine3.8/amd64/Dockerfile
+    - tags: [ 2.2.104-bionic, 2.2-bionic ]
+      osVersion: Ubuntu 18.04
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/sdk/bionic/amd64/Dockerfile
+    - tags: [ 3.0.100-preview-stretch, 3.0-stretch, 3.0.100-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/sdk/stretch/amd64/Dockerfile
+    - tags: [ 3.0.100-preview-alpine3.9, 3.0-alpine3.9, 3.0.100-preview-alpine, 3.0-alpine ]
+      osVersion: Alpine 3.9
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/sdk/alpine3.9/amd64/Dockerfile
+    - tags: [ 3.0.100-preview-bionic, 3.0-bionic ]
+      osVersion: Ubuntu 18.04
+      architecture: amd64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/sdk/bionic/amd64/Dockerfile
+    - tags: [ 2.1.504-stretch-arm32v7, 2.1-stretch-arm32v7, 2.1.504, 2.1 ]
+      osVersion: Debian 9
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/sdk/stretch/arm32v7/Dockerfile
+    - tags: [ 2.1.504-bionic-arm32v7, 2.1-bionic-arm32v7 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/sdk/bionic/arm32v7/Dockerfile
+    - tags: [ 2.2.104-stretch-arm32v7, 2.2-stretch-arm32v7, 2.2.104, 2.2, latest ]
+      osVersion: Debian 9
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/sdk/stretch/arm32v7/Dockerfile
+    - tags: [ 2.2.104-bionic-arm32v7, 2.2-bionic-arm32v7 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/sdk/bionic/arm32v7/Dockerfile
+    - tags: [ 3.0.100-preview-stretch-arm32v7, 3.0-stretch-arm32v7, 3.0.100-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/sdk/stretch/arm32v7/Dockerfile
+    - tags: [ 3.0.100-preview-bionic-arm32v7, 3.0-bionic-arm32v7 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/sdk/bionic/arm32v7/Dockerfile
+    - tags: [ 3.0.100-preview-stretch-arm64v8, 3.0-stretch-arm64v8, 3.0.100-preview, 3.0 ]
+      osVersion: Debian 9
+      architecture: arm64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/sdk/stretch/arm64v8/Dockerfile
+    - tags: [ 3.0.100-preview-bionic-arm64v8, 3.0-bionic-arm64v8 ]
+      osVersion: Ubuntu 18.04
+      architecture: arm64
+      os: linux
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/sdk/bionic/arm64v8/Dockerfile
+    - tags: [ 2.1.504-nanoserver-1809, 2.1-nanoserver-1809, 2.1.504, 2.1 ]
+      osVersion: Windows Server, version 1809
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/sdk/nanoserver-1809/amd64/Dockerfile
+    - tags: [ 2.2.104-nanoserver-1809, 2.2-nanoserver-1809, 2.2.104, 2.2, latest ]
+      osVersion: Windows Server, version 1809
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/sdk/nanoserver-1809/amd64/Dockerfile
+    - tags: [ 3.0.100-preview-nanoserver-1809, 3.0-nanoserver-1809, 3.0.100-preview, 3.0 ]
+      osVersion: Windows Server, version 1809
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/sdk/nanoserver-1809/amd64/Dockerfile
+    - tags: [ 2.1.504-nanoserver-1803, 2.1-nanoserver-1803, 2.1.504, 2.1 ]
+      osVersion: Windows Server, version 1803
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/sdk/nanoserver-1803/amd64/Dockerfile
+    - tags: [ 2.2.104-nanoserver-1803, 2.2-nanoserver-1803, 2.2.104, 2.2, latest ]
+      osVersion: Windows Server, version 1803
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/sdk/nanoserver-1803/amd64/Dockerfile
+    - tags: [ 3.0.100-preview-nanoserver-1803, 3.0-nanoserver-1803, 3.0.100-preview, 3.0 ]
+      osVersion: Windows Server, version 1803
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/sdk/nanoserver-1803/amd64/Dockerfile
+    - tags: [ 2.1.504-nanoserver-1709, 2.1-nanoserver-1709, 2.1.504, 2.1 ]
+      osVersion: Windows Server, version 1709
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/sdk/nanoserver-1709/amd64/Dockerfile
+    - tags: [ 2.2.104-nanoserver-1709, 2.2-nanoserver-1709, 2.2.104, 2.2, latest ]
+      osVersion: Windows Server, version 1709
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/sdk/nanoserver-1709/amd64/Dockerfile
+    - tags: [ 3.0.100-preview-nanoserver-1709, 3.0-nanoserver-1709, 3.0.100-preview, 3.0 ]
+      osVersion: Windows Server, version 1709
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/sdk/nanoserver-1709/amd64/Dockerfile
+    - tags: [ 1.1.12-nanoserver-sac2016, 1.1-nanoserver-sac2016, 1.1.12, 1.1 ]
+      osVersion: Windows Server 2016 SAC
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/1.1/sdk/nanoserver-sac2016/amd64/Dockerfile
+    - tags: [ 2.1.504-nanoserver-sac2016, 2.1-nanoserver-sac2016, 2.1.504, 2.1 ]
+      osVersion: Windows Server 2016 SAC
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.1/sdk/nanoserver-sac2016/amd64/Dockerfile
+    - tags: [ 2.2.104-nanoserver-sac2016, 2.2-nanoserver-sac2016, 2.2.104, 2.2, latest ]
+      osVersion: Windows Server 2016 SAC
+      architecture: amd64
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/sdk/nanoserver-sac2016/amd64/Dockerfile
+    - tags: [ 2.2.104-nanoserver-1809-arm32, 2.2-nanoserver-1809-arm32, 2.2.104, 2.2, latest ]
+      osVersion: Windows Server, version 1809
+      architecture: arm
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/2.2/sdk/nanoserver-1809/arm32/Dockerfile
+    - tags: [ 3.0.100-preview-nanoserver-1809-arm32, 3.0-nanoserver-1809-arm32, 3.0.100-preview, 3.0 ]
+      osVersion: Windows Server, version 1809
+      architecture: arm
+      os: windows
+      dockerfile: https://github.com/dotnet/dotnet-docker/blob/nightly/3.0/sdk/nanoserver-1809/arm32/Dockerfile

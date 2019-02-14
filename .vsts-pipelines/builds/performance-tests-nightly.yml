@@ -1,0 +1,20 @@
+trigger: none
+jobs:
+- job: Linux Perf Tests
+  pool: Hosted Windows Container
+  steps:
+  - template: ../steps/cleanup-docker-linux.yml
+  - script: docker build -t runner -f ./tests/Dockerfile.linux.testrunner .
+    displayName: Build Runner Image
+  - script: >
+      docker run --rm -v /var/run/docker.sock:/var/run/docker.sock runner
+      pwsh -File ./tests/performance/Validate-ImageSize.ps1
+    displayName: Run Perf Tests
+  - template: ../steps/cleanup-docker-linux.yml
+- job: Windows Perf Tests
+  pool: Hosted Ubuntu 1604
+  steps:
+  - template: ../steps/cleanup-docker-windows.yml
+  - powershell: ./tests/performance/Validate-ImageSize.ps1
+    displayName: Run Perf Tests
+  - template: ../steps/cleanup-docker-windows.yml

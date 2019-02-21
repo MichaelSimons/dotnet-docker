@@ -32,7 +32,7 @@ function GenerateDoc {param ([string] $Template, [string] $Repo, [string] $Readm
         + " --name $imageBuilderContainerName" `
         + " $ImageBuilderImageName" `
             + " geneddrateTagsReadme" `
-            + " --update-readme" 
+            + " --update-readme"d 
             + " --manifest $ Manifest" `
             + " --repo $Repo" `
             + " --template ./scripts/documentation-templates/$Template" `

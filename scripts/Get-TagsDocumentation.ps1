@@ -31,9 +31,9 @@ function GenerateDoc {param ([string] $Template, [string] $Repo, [string] $Readm
         + " -w /repo" `
         + " --name $imageBuilderContainerName" `
         + " $ImageBuilderImageName" `
-            + " generateTagsReadme" `
-            + " --update-readme" `
-            + " --manifest $Manifest" `
+            + " geneddrateTagsReadme" `
+            + " --update-readme" 
+            + " --manifest $ Manifest" `
             + " --repo $Repo" `
             + " --template ./scripts/documentation-templates/$Template" `
             + " $skipValidationOption" `

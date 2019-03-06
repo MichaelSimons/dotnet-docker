@@ -28,7 +28,7 @@ namespace Dotnet.Docker
         private static readonly string s_envShaPattern = $"ENV DOTNET_[\\S]*DOWNLOAD_SHA (?<{ValueGroupName}>[\\S]*)";
         private static readonly string s_envDownloadUrlPattern = $"ENV (DOTNET_[\\S]*DOWNLOAD_URL) (?<{ValueGroupName}>[\\S]*)";
         private static readonly string s_inlineUrlPatternFormat =
-            $"(?<{ValueGroupName}>https://dotnetcli.blob.core.windows.net/[^;\\s]*{{0}})";
+            $"(?<{ValueGroupName}>https://[^;\\s]*.blob.core.windows.net/[^;\\s]*{{0}})";
         private static readonly string s_inlineProductUrlPattern = string.Format(s_inlineUrlPatternFormat, string.Empty);
         private static readonly string s_inlineLzmaUrlPattern = string.Format(s_inlineUrlPatternFormat, "lzma");
         private static readonly string s_varShaPatternFormat = $"[ \\$]({{0}})sha512( )*=( )*'(?<{ValueGroupName}>[^'\\s]*)'";

@@ -8,6 +8,7 @@ namespace Dotnet.Docker
 {
     public class Options
     {
+        public (string, string)? AltStorage { get; private set; }
         public string AspnetVersion { get; private set; }
         public Uri BuildInfoUrl { get; private set; }
         public string GitHubEmail { get; private set; }
@@ -17,6 +18,7 @@ namespace Dotnet.Docker
         public string GitHubUpstreamOwner => "dotnet";
         public string GitHubUser { get; private set; }
         public string RuntimeVersion { get; private set; }
+        public string SasToken { get; private set; }
         public string SdkVersion { get; private set; }
         public bool UpdateOnly => GitHubEmail == null || GitHubPassword == null || GitHubUser == null;
 
@@ -52,6 +54,24 @@ namespace Dotnet.Docker
                     ref sdkVersion,
                     "SDK version to update the Dockerfiles with (alternative to build-info)");
                 SdkVersion = sdkVersion;
+
+                string sasToken = null;
+                syntax.DefineOption(
+                    "sas-token",
+                    ref sasToken,
+                    "SAS token to append to download urls");
+                SasToken = sasToken;
+
+                string altStorage = null;
+                syntax.DefineOption(
+                    "alt-storage",
+                    ref altStorage,
+                    "Alternate blob storage source url to download from (<original>=<replacement>)");
+                if (altStorage != null)
+                {
+                    string[] altStorageParts = altStorage.Split('=', 2);
+                    AltStorage = (altStorageParts[0], altStorageParts[1]);
+                }
 
                 string gitHubEmail = null;
                 syntax.DefineOption(

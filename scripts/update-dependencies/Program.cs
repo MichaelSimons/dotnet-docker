@@ -23,6 +23,7 @@ namespace Dotnet.Docker
         private const string AspNetCoreBuildInfoName = "aspnet";
         private const string RuntimeBuildInfoName = "core-setup";
         private const string SdkBuildInfoName = "cli";
+        public const string ProductionStorageAccount = "dotnetcli.blob.core.windows.net";
 
         private static Options Options { get; } = new Options();
         private static string RepoRoot { get; } = Directory.GetCurrentDirectory();
@@ -184,17 +185,30 @@ namespace Dotnet.Docker
 
             // NOTE: The order in which the updaters are returned/invoked is important as there are cross dependencies 
             // (e.g. sha updater requires the version numbers to be updated within the Dockerfiles)
+            IEnumerable<IDependencyUpdater> updaters =
+                CreateDockerfileEnvUpdaters(dockerfiles, buildInfos, "DOTNET_SDK_VERSION", SdkBuildInfoName)
+                    .Concat(CreateDockerfileEnvUpdaters(dockerfiles, buildInfos, "ASPNETCORE_VERSION", AspNetCoreBuildInfoName))
+                    .Concat(CreateDockerfileEnvUpdaters(dockerfiles, buildInfos, "DOTNET_VERSION", RuntimeBuildInfoName))
+
+            if (Options.SasToken != null)
+            {
+                updaters = updaters.Concat(dockerfiles.Select(path => new SasTokenUpdater(path, Options.SasToken)));
+            }
+            if (Options.AltStorage != null)
+            {
+                updaters = updaters.Concat(dockerfiles.Select(path => new StorageUrlUpdater(path, Options.AltStorage.Value.Item1, Options.AltStorage.Value.Item2)));
+            }
+
             List<IDependencyUpdater> manifestBasedUpdaters = new List<IDependencyUpdater>();
             CreateManifestUpdater(manifestBasedUpdaters, "Sdk", buildInfos, SdkBuildInfoName);
             CreateManifestUpdater(manifestBasedUpdaters, "Runtime", buildInfos, RuntimeBuildInfoName);
             manifestBasedUpdaters.Add(new ReadMeUpdater(RepoRoot));
 
-            return CreateDockerfileEnvUpdaters(dockerfiles, buildInfos, "DOTNET_SDK_VERSION", SdkBuildInfoName)
-                .Concat(CreateDockerfileEnvUpdaters(dockerfiles, buildInfos, "ASPNETCORE_VERSION", AspNetCoreBuildInfoName))
-                .Concat(CreateDockerfileEnvUpdaters(dockerfiles, buildInfos, "DOTNET_VERSION", RuntimeBuildInfoName))
-                .Concat(dockerfiles.Select(path => DockerfileShaUpdater.CreateProductShaUpdater(path)))
+            updaters.Concat(dockerfiles.Select(path => DockerfileShaUpdater.CreateProductShaUpdater(path)))
                 .Concat(dockerfiles.Select(path => DockerfileShaUpdater.CreateLzmaShaUpdater(path)))
                 .Concat(manifestBasedUpdaters);
+
+            return updaters;
         }
 
         private static IEnumerable<IDependencyUpdater> CreateDockerfileEnvUpdaters(

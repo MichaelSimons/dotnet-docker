@@ -41,9 +41,9 @@ function GenerateDoc {
         + " --update-readme" `
         + " --manifest $Manifest" `
         + " --repo $Repo" `
-        + " --template ./scripts/documentation-templates/$Template" `
         + " $skipValidationOption" `
         + " https://github.com/dotnet/dotnet-docker/blob/${Branch}"
+        + " ./scripts/documentation-templates/$Template" `
 
     & "$PSScriptRoot/Invoke-ImageBuilder.ps1" `
         -ImageBuilderArgs $imageBuilderArgs `

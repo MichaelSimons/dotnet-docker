@@ -2,7 +2,7 @@ parameters:
   setupImageBuilder:  true
 
 steps:
-- script: echo "##vso[task.setvariable variable=artifactsPath]$(Build.ArtifactStagingDirectory)
+- script: echo "##vso[task.setvariable variable=artifactsPath]c:\artifacts
   displayName: Define Artifacts Path Variable
 
 - ${{ if eq(variables['System.TeamProject'], 'internal') }}:
@@ -23,18 +23,17 @@ steps:
 - ${{ if eq(parameters.setupImageBuilder, 'true') }}:
   - powershell: $(engCommonPath)/Invoke-WithRetry.ps1 "docker pull $(imageNames.imagebuilder.windows)"
     displayName: Pull Image Builder
-  - script: docker create --name setupImageBuilder-$(Build.BuildId)-$(System.JobId) $(imageNames.imagebuilder.windows)
-    displayName: Create Setup Container
   - script: >
-      docker cp
-      setupImageBuilder-$(Build.BuildId)-$(System.JobId):/image-builder
-      $(Build.BinariesDirectory)/.Microsoft.DotNet.ImageBuilder
-    displayName: Copy Image Builder
-  - script: docker rm -f setupImageBuilder-$(Build.BuildId)-$(System.JobId)
-    displayName: Cleanup Setup Container
-    condition: always()
-    continueOnError: true
+      docker build
+      -t $(imageNames.imageBuilder.withrepo)
+      --build-arg IMAGE=$(imageNames.imageBuilder.windows)
+      -f $(engCommonPath)/Dockerfile.WithRepo .
+    displayName: Build Image for Image Builder
   - script: >
       echo "##vso[task.setvariable variable=runImageBuilderCmd]
-      $(Build.BinariesDirectory)\.Microsoft.DotNet.ImageBuilder\Microsoft.DotNet.ImageBuilder.exe
+      docker run --rm
+      -v \\.\pipe\docker_engine:\\.\pipe\docker_engine
+      -v $(Build.ArtifactStagingDirectory):$(artifactsPath)
+      -w /repo
+      $(imageNames.imageBuilder.withrepo)
     displayName: Define runImageBuilderCmd Variable

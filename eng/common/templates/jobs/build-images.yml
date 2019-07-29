@@ -60,8 +60,9 @@ jobs:
       artifact: $(legName)-image-info
       displayName: Publish Image Info File Artifact
   - ${{ if eq(variables['System.TeamProject'], 'public') }}:
-    - template: ${{ format('../steps/test-images-{0}-client.yml', parameters.dockerClientOS) }}
+    - template: ../steps/test-images.yml
       parameters:
+        dockerClientOS:  ${{ parameters.dockerClientOS }}
         useRemoteDockerServer: ${{ parameters.useRemoteDockerServer }}
   - template: ${{ format('../steps/cleanup-docker-{0}.yml', parameters.dockerClientOS) }}
     parameters:

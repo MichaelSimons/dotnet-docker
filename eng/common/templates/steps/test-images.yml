@@ -1,0 +1,116 @@
+parameters:
+  dockerClientOS: null
+  useRemoteDockerServer: false
+
+steps:
+- template: ${{ format('../steps/init-docker-{0}.yml', parameters.dockerClientOS) }}
+  parameters:
+    setupRemoteDockerServer: ${{ parameters.useRemoteDockerServer }}
+    setupImageBuilder: false
+    setupTestRunner: true
+    cleanupDocker: ${{ eq(variables['System.TeamProject'], 'internal') }}
+# Don't hosted linux machines have powershell?  If so commonality could be encapsulated in a single task.
+- ${{ if eq(parameters.dockerClientOS, 'linux') }}:
+  - script: |
+      echo "##vso[task.setvariable variable=testRunner.container]testrunner-$(Build.BuildId)-$(System.JobId)"
+
+      optionalTestArgs=""
+      if [ "${{ parameters.useRemoteDockerServer }}" == "true" ]; then
+        optionalTestArgs="-DisableHttpVerification"
+      fi
+      if [ "${{ eq(variables['System.TeamProject'], 'public') }}" == "False" ]; then
+        optionalTestArgs="$optionalTestArgs -Registry $(acr.server) -RepoPrefix $(stagingRepoPrefix) -ImageInfoPath $(artifactsPath)/image-info/image-info.json"
+      else
+        optionalTestArgs="$optionalTestArgs -IsLocalRun"
+      fi
+      echo "##vso[task.setvariable variable=optionalTestArgs]$optionalTestArgs"
+
+      echo "##vso[task.setvariable variable=powershellCmd]pwsh"
+    displayName: Set Test Variables
+- ${{ if eq(parameters.dockerClientOS, 'windows') }}:
+  - powershell: |
+      Write-Host "##vso[task.setvariable variable=testRunner.container]testrunner-$(Build.BuildId)-$(System.JobId)"
+
+      $optionalTestArgs = ""
+      if ("${{ eq(variables['System.TeamProject'], 'public') }}" -eq "False" ) {
+        $optionalTestArgs = "-Registry $(acr.server) -RepoPrefix $(stagingRepoPrefix) -ImageInfoPath $(artifactsPath)/image-info/image-info.json";
+      }
+      else {
+        $optionalTestArgs = "-IsLocalRun";
+      }
+      Write-Host "##vso[task.setvariable variable=optionalTestArgs]$optionalTestArgs"
+
+      Write-Host "##vso[task.setvariable variable=dockerArmRunArgs]"
+      Write-Host "##vso[task.setvariable variable=powershellCmd]powershell"
+    displayName: Set Test Variables
+- ${{ if eq(parameters.dockerClientOS, 'linux') }}:
+  - script: >
+      docker run -t -d
+      $(dockerEngineMount)
+      -v $(Build.ArtifactStagingDirectory):$(artifactsPath)
+      -w /repo $(dockerArmRunArgs)
+      -e RUNNING_TESTS_IN_CONTAINER=true
+      --name $(testRunner.container)
+      $(imageNames.testRunner.withrepo)
+    displayName: Start Test Runner Container
+# Necessary because image-builder image is being used as testrunner images
+# long term - define windows testrunner, remove image-build entrypoint, ?
+- ${{ if eq(parameters.dockerClientOS, 'windows') }}:
+  - script: >
+      docker run -t -d
+      $(dockerEngineMount)
+      -v $(Build.ArtifactStagingDirectory):$(artifactsPath)
+      -w /repo $(dockerArmRunArgs)
+      -e RUNNING_TESTS_IN_CONTAINER=true
+      --name $(testRunner.container)
+      --entrypoint cmd
+      $(imageNames.testRunner.withrepo)
+    displayName: Start Test Runner Container
+- ${{ if eq(variables['System.TeamProject'], 'internal') }}:
+  - script: >
+      docker exec $(testRunner.container) $(powershellCmd)
+      -File $(engCommonRelativePath)/Invoke-WithRetry.ps1
+      "docker login -u $(acr.userName) -p $(BotAccount-dotnet-docker-acr-bot-password) $(acr.server)"
+    displayName: Docker login
+  - template: ../steps/download-build-artifact.yml
+    parameters:
+      targetPath: $(Build.ArtifactStagingDirectory)
+- script: >
+    docker exec $(testRunner.container) $(powershellCmd)
+    -File ./tests/run-tests.ps1
+    -VersionFilter $(dotnetVersion)
+    -OSFilter $(osVariant)*
+    -ArchitectureFilter $(architecture)
+    $(optionalTestArgs)
+  displayName: Test Images
+- ${{ if eq(variables['System.TeamProject'], 'internal') }}:
+  - script: docker exec $(testRunner.container) docker logout $(acr.server)
+    displayName: Docker logout
+    condition: always()
+    continueOnError: true
+- script: >
+    docker cp
+    $(testRunner.container):/repo/tests/Microsoft.DotNet.Docker.Tests/TestResults/
+    $(Common.TestResultsDirectory)/.
+  displayName: Copy Test Results
+  condition: always()
+  continueOnError: true
+- task: PublishTestResults@2
+  displayName: Publish Test Results
+  condition: always()
+  continueOnError: true
+  inputs:
+    testRunner: vSTest
+    testResultsFiles: '**/*.trx'
+    searchFolder: $(Common.TestResultsDirectory)
+    mergeTestResults: true
+    publishRunAttachments: true
+    testRunTitle: $(dotnetVersion) $(osVariant) $(architecture)
+- script: docker rm -f $(testRunner.container)
+  displayName: Cleanup TestRunner Container
+  condition: always()
+  continueOnError: true
+- ${{ if eq(variables['System.TeamProject'], 'internal') }}:
+  - template: ${{ format('../steps/cleanup-docker-{0}.yml', parameters.dockerClientOS) }}
+    parameters:
+      cleanupRemoteDockerServer: ${{ parameters.useRemoteDockerServer }}

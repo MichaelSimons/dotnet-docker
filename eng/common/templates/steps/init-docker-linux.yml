@@ -15,6 +15,9 @@ steps:
   - script: echo '##vso[task.setvariable variable=imageBuilderImageInfoArg]'
     displayName: Set Image Info Arg for Image Builder
 
+- script: echo '##vso[task.setvariable variable=dockerEngineMount]-v /var/run/docker.sock:/var/run/docker.sock'
+  displayName: Set Docker Engine Mount
+
   ################################################################################
   # Cleanup Docker Resources
   ################################################################################
@@ -51,7 +54,7 @@ steps:
   - script: >
       echo "##vso[task.setvariable variable=runImageBuilderCmd]
       docker run --rm
-      -v /var/run/docker.sock:/var/run/docker.sock
+      $(dockerEngineMount)
       -v $(Build.ArtifactStagingDirectory):$(artifactsPath)
       -w /repo
       $(dockerArmRunArgs)

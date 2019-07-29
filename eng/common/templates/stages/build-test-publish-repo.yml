@@ -191,13 +191,14 @@ stages:
         matrixType: ${{ parameters.testMatrixType }}
         name: GenerateTestMatrix
 
-    - template: ../jobs/test-images-linux-client.yml
+    - template: ../jobs/test-images.yml
       parameters:
         name: Test_Linux_amd64
         pool: # linuxAmd64Pool
           name: Hosted Ubuntu 1604
         matrix: dependencies.GenerateTestMatrix.outputs['${{ format('matrix.{0}MatrixLinuxAmd64', parameters.testMatrixType) }}']
-    - template: ../jobs/test-images-linux-client.yml
+        dockerClientOS: linux
+    - template: ../jobs/test-images.yml
       parameters:
         name: Test_Linux_arm64v8
         pool: # linuxArm64v8Pool
@@ -208,7 +209,8 @@ stages:
           - RemoteDockerServerArch -equals aarch64
         matrix: dependencies.GenerateTestMatrix.outputs['${{ format('matrix.{0}MatrixLinuxArm64v8', parameters.testMatrixType) }}']
         useRemoteDockerServer: true
-    - template: ../jobs/test-images-linux-client.yml
+        dockerClientOS: linux
+    - template: ../jobs/test-images.yml
       parameters:
         name: Test_Linux_arm32v7
         pool: # linuxArm32v7Pool
@@ -219,21 +221,24 @@ stages:
           - RemoteDockerServerArch -equals aarch64
         matrix: dependencies.GenerateTestMatrix.outputs['${{ format('matrix.{0}MatrixLinuxArm32v7', parameters.testMatrixType) }}']
         useRemoteDockerServer: true
-    - template: ../jobs/test-images-windows-client.yml
+        dockerClientOS: linux
+    - template: ../jobs/test-images.yml
       parameters:
         name: Test_NanoServer1803_amd64
         pool: # windows1803Amd64Pool
           name: DotNetCore-Docker
           demands: VSTS_OS -equals Windows_Server_2016_Data_Center_RS4
         matrix: dependencies.GenerateTestMatrix.outputs['${{ format('matrix.{0}MatrixNanoserver1803Amd64', parameters.testMatrixType) }}']
-    - template: ../jobs/test-images-windows-client.yml
+        dockerClientOS: windows
+    - template: ../jobs/test-images.yml
       parameters:
         name: Test_NanoServer1809_amd64
         pool: # windows1809Amd64
           name: DotNetCore-Docker
           demands: VSTS_OS -equals Windows_Server_2019_Data_Center_RS5
         matrix: dependencies.GenerateTestMatrix.outputs['${{ format('matrix.{0}MatrixNanoserver1809Amd64', parameters.testMatrixType) }}']
-    - template: ../jobs/test-images-linux-client.yml
+        dockerClientOS: linux
+    - template: ../jobs/test-images.yml
       parameters:
         name: Test_NanoServer1809_arm32
         pool: # nanoServer1809Arm32Pool
@@ -244,7 +249,8 @@ stages:
           - RemoteDockerServerArch -equals arm32
         matrix: dependencies.GenerateTestMatrix.outputs['${{ format('matrix.{0}MatrixNanoserver1809Arm32', parameters.testMatrixType) }}']
         useRemoteDockerServer: true
-    - template: ../jobs/test-images-windows-client.yml
+        dockerClientOS: windows
+    - template: ../jobs/test-images.yml
       parameters:
         name: Test_NanoServer1903_amd64
         buildDependencies: Build_NanoServer1903_amd64
@@ -252,7 +258,8 @@ stages:
           name: DotNetCore-Docker
           demands: VSTS_OS -equals Windows_Server_2019_Data_Center_1903
         matrix: dependencies.GenerateTestMatrix.outputs['${{ format('matrix.{0}MatrixNanoserver1903Amd64', parameters.testMatrixType) }}']
-    - template: ../jobs/test-images-windows-client.yml
+        dockerClientOS: windows
+    - template: ../jobs/test-images.yml
       parameters:
         name: Test_WindowsServerCoreLtsc2016_amd64
         buildDependencies: Build_WindowsServerCoreLtsc2016_amd64
@@ -260,7 +267,8 @@ stages:
           name: DotNetCore-Docker
           demands: VSTS_OS -equals Windows_Server_2016_Data_Center_with_Containers
         matrix: dependencies.GenerateTestMatrix.outputs['${{ format('matrix.{0}MatrixWindowsservercoreLtsc2016Amd64', parameters.testMatrixType) }}']
-    - template: ../jobs/test-images-windows-client.yml
+        dockerClientOS: windows
+    - template: ../jobs/test-images.yml
       parameters:
         name: Test_WindowsServerCore1803_amd64
         buildDependencies: Build_WindowsServerCore1803_amd64
@@ -268,7 +276,8 @@ stages:
           name: DotNetCore-Docker
           demands: VSTS_OS -equals Windows_Server_2016_Data_Center_RS4
         matrix: dependencies.GenerateTestMatrix.outputs['${{ format('matrix.{0}MatrixWindowsservercore1803Amd64', parameters.testMatrixType) }}']
-    - template: ../jobs/test-images-windows-client.yml
+        dockerClientOS: windows
+    - template: ../jobs/test-images.yml
       parameters:
         name: Test_WindowsServerCoreLtsc2019_amd64
         buildDependencies: Build_WindowsServerCoreLtsc2019_amd64
@@ -276,7 +285,8 @@ stages:
           name: DotNetCore-Docker
           demands: VSTS_OS -equals Windows_Server_2019_Data_Center_RS5
         matrix: dependencies.GenerateTestMatrix.outputs['${{ format('matrix.{0}MatrixWindowsservercoreLtsc2019Amd64', parameters.testMatrixType) }}']
-    - template: ../jobs/test-images-windows-client.yml
+        dockerClientOS: windows
+    - template: ../jobs/test-images.yml
       parameters:
         name: Test_WindowsServerCore1903_amd64
         buildDependencies: Build_WindowsServerCore1903_amd64
@@ -284,6 +294,7 @@ stages:
           name: DotNetCore-Docker
           demands: VSTS_OS -equals Windows_Server_2019_Data_Center_1903
         matrix: dependencies.GenerateTestMatrix.outputs['${{ format('matrix.{0}MatrixWindowsservercore1903Amd64', parameters.testMatrixType) }}']
+        dockerClientOS: windows
 
   ################################################################################
   # Publish Images

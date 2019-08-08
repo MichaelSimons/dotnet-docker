@@ -118,7 +118,7 @@ namespace Microsoft.DotNet.Docker.Tests
 
                 // TODO: Remove Windows arm workaround once underlying Windows/Docker issue is resolved
                 // https://github.com/dotnet/dotnet-docker/issues/1054
-                if (!DockerHelper.IsLinuxContainerModeEnabled && _imageData.Arch == Arch.Arm)
+                if (!DockerHelper.IsLinuxContainerModeEnabled && _imageData.Arch == Arch.Arm && _imageData.Version.Major >= 3)
                 {
                     sourceDockerfileName += $".{Enum.GetName(typeof(Arch), _imageData.Arch).ToLowerInvariant()}";
                 }

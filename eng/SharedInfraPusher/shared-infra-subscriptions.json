@@ -1,0 +1,34 @@
+[
+  {
+    "repoInfo": {
+      "owner": "dotnet",
+      "name": "dotnet-docker",
+      "branch": "nightly"
+    },
+    "sourcePath": "eng/common"
+  },
+  {
+    "repoInfo": {
+      "owner": "dotnet",
+      "name": "dotnet-docker",
+      "branch": "master"
+    },
+    "sourcePath": "eng/common"
+  },
+  {
+    "repoInfo": {
+      "owner": "dotnet",
+      "name": "dotnet-buildtools-prereqs",
+      "branch": "master"
+    },
+    "sourcePath": "eng/common"
+  },
+  {
+    "repoInfo": {
+      "owner": "microsoft",
+      "name": "dotnet-framework-docker",
+      "branch": "master"
+    },
+    "sourcePath": "eng/common"
+  }
+]

@@ -1,7 +1,8 @@
 [
   {
     "repoInfo": {
-      "owner": "dotnet",
+      "owner": "MichaelSimons",
+      // "owner": "dotnet",
       "name": "dotnet-docker",
       "branch": "nightly"
     },
@@ -9,7 +10,8 @@
   },
   {
     "repoInfo": {
-      "owner": "dotnet",
+      "owner": "MichaelSimons",
+      // "owner": "dotnet",
       "name": "dotnet-docker",
       "branch": "master"
     },
@@ -17,7 +19,8 @@
   },
   {
     "repoInfo": {
-      "owner": "dotnet",
+      "owner": "MichaelSimons",
+      // "owner": "dotnet",
       "name": "dotnet-buildtools-prereqs",
       "branch": "master"
     },
@@ -25,7 +28,8 @@
   },
   {
     "repoInfo": {
-      "owner": "microsoft",
+      "owner": "MichaelSimons",
+      // "owner": "microsoft",
       "name": "dotnet-framework-docker",
       "branch": "master"
     },

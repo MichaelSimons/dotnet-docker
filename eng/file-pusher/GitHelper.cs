@@ -58,7 +58,8 @@ namespace FilePusher
                 string.Empty,
                 branch,
                 project,
-                prOptions);
+                prOptions,
+                client);
 
             // Only fast-forward. Don't overwrite other changes: throw exception instead.
             //return await client.PatchReferenceAsync(project, masterRef, commit.Sha, force: false);

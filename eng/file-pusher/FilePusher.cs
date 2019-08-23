@@ -38,7 +38,7 @@ namespace FilePusher
 
                 await GitHelper.ExecuteGitOperationsWithRetryAsync(Options, async client =>
                 {
-                    await GitHelper.PushChangesAsync(client, subscription.RepoInfo, $"Updating {subscription.sourcePath}", async branch =>
+                    await GitHelper.CreatePRAsync(client, subscription.RepoInfo, $"Updating {subscription.sourcePath}", async branch =>
                     {
                         return await GetUpdatedFiles(subscription.sourcePath, client, branch);
                     });

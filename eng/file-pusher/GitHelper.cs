@@ -24,7 +24,7 @@ namespace FilePusher
             return new GitHubClient(githubAuth);
         }
 
-        public static async Task<GitReference> PushChangesAsync(GitHubClient client, GitRepo gitRepo, string commitMessage, Func<GitHubBranch, Task<IEnumerable<GitObject>>> getChanges)
+        public static async Task CreatePRAsync(GitHubClient client, GitRepo gitRepo, string commitMessage, Func<GitHubBranch, Task<IEnumerable<GitObject>>> getChanges)
         {
             GitHubProject project = new GitHubProject(gitRepo.Name, gitRepo.Owner);
             GitHubBranch branch = new GitHubBranch(gitRepo.Branch, project);
@@ -33,7 +33,7 @@ namespace FilePusher
 
             if (!changes.Any())
             {
-                return null;
+                return;
             }
 
             string masterRef = $"heads/{gitRepo.Branch}";
@@ -43,8 +43,25 @@ namespace FilePusher
             GitCommit commit = await client.PostCommitAsync(
                 project, commitMessage, tree.Sha, new[] { masterSha });
 
+
+            // TODO: Create PR instead of pushing...
+            // GitHubAuth gitHubAuth = new GitHubAuth(Options.GitHubPassword, Options.GitHubUser, Options.GitHubEmail);
+            PullRequestCreator prCreator = new PullRequestCreator(client.Auth, client.Auth.User);
+            PullRequestOptions prOptions = new PullRequestOptions()
+            {
+                BranchNamingStrategy = new SingleBranchNamingStrategy($"UpdateDependencies-{gitRepo.Branch}")
+            };
+
+            await prCreator.CreateOrUpdateAsync(
+                commitMessage,
+                commitMessage,
+                string.Empty,
+                branch,
+                project,
+                prOptions);
+
             // Only fast-forward. Don't overwrite other changes: throw exception instead.
-            return await client.PatchReferenceAsync(project, masterRef, commit.Sha, force: false);
+            //return await client.PatchReferenceAsync(project, masterRef, commit.Sha, force: false);
         }
 
         public static async Task ExecuteGitOperationsWithRetryAsync(Options options, Func<GitHubClient, Task> execute,

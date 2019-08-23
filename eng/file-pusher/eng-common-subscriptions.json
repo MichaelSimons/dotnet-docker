@@ -7,32 +7,32 @@
       "branch": "nightly"
     },
     "sourcePath": "eng/common"
-  },
-  {
-    "repoInfo": {
-      "owner": "MichaelSimons",
-      // "owner": "dotnet",
-      "name": "dotnet-docker",
-      "branch": "master"
-    },
-    "sourcePath": "eng/common"
-  },
-  {
-    "repoInfo": {
-      "owner": "MichaelSimons",
-      // "owner": "dotnet",
-      "name": "dotnet-buildtools-prereqs",
-      "branch": "master"
-    },
-    "sourcePath": "eng/common"
-  },
-  {
-    "repoInfo": {
-      "owner": "MichaelSimons",
-      // "owner": "microsoft",
-      "name": "dotnet-framework-docker",
-      "branch": "master"
-    },
-    "sourcePath": "eng/common"
   }
+  // {
+  //   "repoInfo": {
+  //     "owner": "MichaelSimons",
+  //     // "owner": "dotnet",
+  //     "name": "dotnet-docker",
+  //     "branch": "master"
+  //   },
+  //   "sourcePath": "eng/common"
+  // },
+  // {
+  //   "repoInfo": {
+  //     "owner": "MichaelSimons",
+  //     // "owner": "dotnet",
+  //     "name": "dotnet-buildtools-prereqs",
+  //     "branch": "master"
+  //   },
+  //   "sourcePath": "eng/common"
+  // },
+  // {
+  //   "repoInfo": {
+  //     "owner": "MichaelSimons",
+  //     // "owner": "microsoft",
+  //     "name": "dotnet-framework-docker",
+  //     "branch": "master"
+  //   },
+  //   "sourcePath": "eng/common"
+  // }
 ]

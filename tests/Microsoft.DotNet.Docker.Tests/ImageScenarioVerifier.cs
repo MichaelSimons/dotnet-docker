@@ -8,7 +8,6 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
-using static Microsoft.DotNet.Docker.Tests.ImageVersion;
 
 namespace Microsoft.DotNet.Docker.Tests
 {
@@ -76,7 +75,7 @@ namespace Microsoft.DotNet.Docker.Tests
             List<string> buildArgs = new List<string>();
             buildArgs.Add($"sdk_image={_imageData.GetImage(DotNetImageType.SDK, _dockerHelper)}");
 
-            DotNetImageType runtimeImageType = _isWeb ? DotNetImageType.Aspnet : DotNetImageType.Runtime;
+            DotNetImageType runtimeImageType = _isWeb ? DotNetImageType.AspNet : DotNetImageType.Runtime;
             buildArgs.Add($"runtime_image={_imageData.GetImage(runtimeImageType, _dockerHelper)}");
 
             if (DockerHelper.IsLinuxContainerModeEnabled)

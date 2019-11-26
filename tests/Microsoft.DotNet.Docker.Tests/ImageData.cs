@@ -152,7 +152,7 @@ namespace Microsoft.DotNet.Docker.Tests
             switch (imageType)
             {
                 case DotNetImageType.Runtime:
-                case DotNetImageType.Aspnet:
+                case DotNetImageType.AspNet:
                     imageVersion = Version;
                     os = OS;
                     break;

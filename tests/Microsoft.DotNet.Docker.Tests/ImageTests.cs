@@ -6,14 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 using static Microsoft.DotNet.Docker.Tests.ImageVersion;
 
 namespace Microsoft.DotNet.Docker.Tests
 {
-    public class ImageTests
+    public abstract class ImageTests
     {
         private static readonly ImageData[] s_linuxTestData =
         {
@@ -73,13 +72,14 @@ namespace Microsoft.DotNet.Docker.Tests
             new ImageData { Version = V3_1, OS = OS.NanoServer1909, Arch = Arch.Amd64 },
         };
 
-        private readonly DockerHelper _dockerHelper;
-        private readonly ITestOutputHelper _outputHelper;
+        protected DockerHelper DockerHelper { get; private set; }
+        protected abstract DotNetImageType ImageType { get; }
+        protected ITestOutputHelper OutputHelper { get; private set; }
 
-        public ImageTests(ITestOutputHelper outputHelper)
+        protected ImageTests(ITestOutputHelper outputHelper)
         {
-            _dockerHelper = new DockerHelper(outputHelper);
-            _outputHelper = outputHelper;
+            DockerHelper = new DockerHelper(outputHelper);
+            OutputHelper = outputHelper;
         }
 
         public static IEnumerable<object[]> GetImageData()
@@ -107,7 +107,7 @@ namespace Microsoft.DotNet.Docker.Tests
 
         [Theory]
         [MemberData(nameof(GetImageData))]
-        public void VerifyImage_InsecureFilesCheck(ImageData imageData)
+        public void VerifyNoInsecureFiles(ImageData imageData)
         {
             if (imageData.Version < new Version("3.1") || !DockerHelper.IsLinuxContainerModeEnabled ||
                 (imageData.OS.Contains("alpine") && imageData.IsArm))
@@ -130,163 +130,30 @@ namespace Microsoft.DotNet.Docker.Tests
 
             string command = $"/bin/sh -c \"{worldWritableDirectoriesWithoutStickyBitCmd} && {worldWritableFilesCmd} && {noUserOrGroupFilesCmd}\"";
 
-            foreach (DotNetImageType imageType in Enum.GetValues(typeof(DotNetImageType)))
-            {
-                string output = _dockerHelper.Run(
-                    image: imageData.GetImage(imageType, _dockerHelper),
-                    name: imageData.GetIdentifier($"InsecureFiles-{imageType}"),
-                    command: command
-                );
-
-                Assert.Empty(output);
-            }
-        }
-
-        [Theory]
-        [MemberData(nameof(GetImageData))]
-        public void VerifySdkImage_EnvironmentVariables(ImageData imageData)
-        {
-            List<EnvironmentVariableInfo> variables = new List<EnvironmentVariableInfo>();
-            variables.AddRange(GetCommonEnvironmentVariables());
-
-            string aspnetUrlsValue = imageData.Version.Major < 3 ? "http://+:80" : string.Empty;
-            variables.Add(new EnvironmentVariableInfo("ASPNETCORE_URLS", aspnetUrlsValue));
-            variables.Add(new EnvironmentVariableInfo("DOTNET_USE_POLLING_FILE_WATCHER", "true"));
-            variables.Add(new EnvironmentVariableInfo("NUGET_XMLDOC_MODE", "skip"));
-
-            if (imageData.Version.Major >= 3
-                && (DockerHelper.IsLinuxContainerModeEnabled || imageData.Version >= new Version("3.1")))
-            {
-                variables.Add(new EnvironmentVariableInfo("POWERSHELL_DISTRIBUTION_CHANNEL", allowAnyValue: true));
-            }
-
-            if (imageData.SdkOS.StartsWith(Tests.OS.AlpinePrefix))
-            {
-                variables.Add(new EnvironmentVariableInfo("DOTNET_SYSTEM_GLOBALIZATION_INVARIANT", "false"));
-                variables.Add(new EnvironmentVariableInfo("LC_ALL", "en_US.UTF-8"));
-                variables.Add(new EnvironmentVariableInfo("LANG", "en_US.UTF-8"));
-            }
-
-            EnvironmentVariableInfo.Validate(variables, DotNetImageType.SDK, imageData, _dockerHelper);
-        }
-
-        [Theory]
-        [MemberData(nameof(GetImageData))]
-        public void VerifySdkImage_PackageCache(ImageData imageData)
-        {
-            string verifyCacheCommand = null;
-            if (imageData.Version.Major == 2)
-            {
-                if (DockerHelper.IsLinuxContainerModeEnabled)
-                {
-                    verifyCacheCommand = "test -d /usr/share/dotnet/sdk/NuGetFallbackFolder";
-                }
-                else
-                {
-                    verifyCacheCommand = "CMD /S /C PUSHD \"C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\"";
-                }
-            }
-            else
-            {
-                _outputHelper.WriteLine(".NET Core SDK images >= 3.0 don't include a package cache.");
-            }
-
-            if (verifyCacheCommand != null)
-            {
-                // Simple check to verify the NuGet package cache was created
-                _dockerHelper.Run(
-                    image: imageData.GetImage(DotNetImageType.SDK, _dockerHelper),
-                    command: verifyCacheCommand,
-                    name: imageData.GetIdentifier("PackageCache"));
-            }
-        }
-
-        [Theory]
-        [MemberData(nameof(GetImageData))]
-        public void VerifySDKImage_PowerShellScenario_DefaultUser(ImageData imageData)
-        {
-            VerifySDKImage_PowerShellScenario_Execute(imageData, null);
-        }
-
-        [Theory]
-        [MemberData(nameof(GetImageData))]
-        public void VerifySDKImage_PowerShellScenario_NonDefaultUser(ImageData imageData)
-        {
-            var optRunArgs = "-u 12345:12345"; // Linux containers test as non-root user
-            if (imageData.OS.Contains("nanoserver", StringComparison.OrdinalIgnoreCase))
-            {
-                // windows containers test as Admin, default execution is as ContainerUser
-                optRunArgs = "-u ContainerAdministrator ";
-            }
-
-            VerifySDKImage_PowerShellScenario_Execute(imageData, optRunArgs);
-        }
-
-        private void VerifySDKImage_PowerShellScenario_Execute(ImageData imageData, string optionalArgs)
-        {
-            if (imageData.Version.Major < 3)
-            {
-                _outputHelper.WriteLine("PowerShell does not exist in pre-3.0 images, skip testing");
-                return;
-            }
-
-            // A basic test which executes an arbitrary command to validate PS is functional
-            string output = _dockerHelper.Run(
-                image: imageData.GetImage(DotNetImageType.SDK, _dockerHelper),
-                name: imageData.GetIdentifier($"pwsh"),
-                optionalRunArgs: optionalArgs,
-                command: $"pwsh -c (Get-Childitem env:DOTNET_RUNNING_IN_CONTAINER).Value"
+            string output = DockerHelper.Run(
+                image: imageData.GetImage(ImageType, DockerHelper),
+                name: imageData.GetIdentifier($"InsecureFiles-{ImageType}"),
+                command: command
             );
 
-            Assert.Equal(output, bool.TrueString, ignoreCase: true);
+            Assert.Empty(output);
         }
 
         [Theory]
         [MemberData(nameof(GetImageData))]
-        public void VerifyRuntimeDepsImage_EnvironmentVariables(ImageData imageData)
+        public void VerifyEnvironmentVariables(ImageData imageData)
         {
-            if (DockerHelper.IsLinuxContainerModeEnabled)
-            {
-                VerifyCommonRuntimeEnvironmentVariables(DotNetImageType.Runtime_Deps, imageData);
-            }
+            EnvironmentVariableInfo.Validate(GetEnvironmentVariables(imageData), ImageType, imageData, DockerHelper);
         }
 
-        [Theory]
-        [MemberData(nameof(GetImageData))]
-        public async Task VerifyRuntimeImage_AppScenario(ImageData imageData)
-        {
-            ImageScenarioVerifier verifier = new ImageScenarioVerifier(imageData, _dockerHelper, _outputHelper);
-            await verifier.Execute();
-        }
+        protected abstract IEnumerable<EnvironmentVariableInfo> GetEnvironmentVariables(ImageData imageData);
 
-        [Theory]
-        [MemberData(nameof(GetImageData))]
-        public void VerifyRuntimeImage_EnvironmentVariables(ImageData imageData)
-        {
-            VerifyCommonRuntimeEnvironmentVariables(DotNetImageType.Runtime, imageData);
-        }
-
-        [Theory]
-        [MemberData(nameof(GetImageData))]
-        public async Task VerifyAspNetImage_AppScenario(ImageData imageData)
-        {
-            ImageScenarioVerifier verifier = new ImageScenarioVerifier(imageData, _dockerHelper, _outputHelper, isWeb: true);
-            await verifier.Execute();
-        }
-
-        [Theory]
-        [MemberData(nameof(GetImageData))]
-        public void VerifyAspNetImage_EnvironmentVariables(ImageData imageData)
-        {
-            VerifyCommonRuntimeEnvironmentVariables(DotNetImageType.Aspnet, imageData);
-        }
-
-        private IEnumerable<EnvironmentVariableInfo> GetCommonEnvironmentVariables()
+        protected IEnumerable<EnvironmentVariableInfo> GetCommonEnvironmentVariables()
         {
             yield return new EnvironmentVariableInfo("DOTNET_RUNNING_IN_CONTAINER", "true");
         }
 
-        private void VerifyCommonRuntimeEnvironmentVariables(DotNetImageType imageType, ImageData imageData)
+        protected IEnumerable<EnvironmentVariableInfo> GetRuntimeEnvironmentVariables(ImageData imageData)
         {
             List<EnvironmentVariableInfo> variables = new List<EnvironmentVariableInfo>();
             variables.AddRange(GetCommonEnvironmentVariables());
@@ -297,7 +164,7 @@ namespace Microsoft.DotNet.Docker.Tests
                 variables.Add(new EnvironmentVariableInfo("DOTNET_SYSTEM_GLOBALIZATION_INVARIANT", "true"));
             }
 
-            EnvironmentVariableInfo.Validate(variables, imageType, imageData, _dockerHelper);
+            return variables;
         }
     }
 }

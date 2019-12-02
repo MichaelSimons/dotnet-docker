@@ -6,11 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Xunit;
+using Xunit.Abstractions;
 using static Microsoft.DotNet.Docker.Tests.ImageVersion;
 
 namespace Microsoft.DotNet.Docker.Tests
 {
-    public static class TestData
+    public abstract class ImageTests
     {
         private static readonly ImageData[] s_linuxTestData =
         {
@@ -70,7 +72,7 @@ namespace Microsoft.DotNet.Docker.Tests
             new ImageData { Version = V3_1, OS = OS.NanoServer1909, Arch = Arch.Amd64 },
         };
 
-        public static IEnumerable<ImageData> GetImageData()
+        protected static IEnumerable<ImageData> GetImageData()
         {
             string archFilterPattern = GetFilterRegexPattern("IMAGE_ARCH_FILTER");
             string osFilterPattern = GetFilterRegexPattern("IMAGE_OS_FILTER");
@@ -90,6 +92,54 @@ namespace Microsoft.DotNet.Docker.Tests
         {
             string filter = Environment.GetEnvironmentVariable(filterEnvName);
             return filter != null ? $"^{Regex.Escape(filter).Replace(@"\*", ".*").Replace(@"\?", ".")}$" : null;
+        }
+
+        public DockerHelper DockerHelper { get;  private set;}
+        public ITestOutputHelper OutputHelper { get;  private set;}
+
+        protected abstract DotNetImageType ImageType { get;}
+
+        public ImageTests(ITestOutputHelper outputHelper)
+        {
+            DockerHelper = new DockerHelper(outputHelper);
+            OutputHelper = outputHelper;
+        }
+
+        protected static IEnumerable<EnvironmentVariableInfo> GetCommonEnvironmentVariables()
+        {
+            yield return new EnvironmentVariableInfo("DOTNET_RUNNING_IN_CONTAINER", "true");
+        }
+
+        protected void VerifyInsecureFiles(ImageData imageData)
+        {
+            if (imageData.Version < new Version("3.1") ||
+                (imageData.OS.Contains("alpine") && imageData.IsArm))
+            {
+                return;
+            }
+
+            string worldWritableDirectoriesWithoutStickyBitCmd = @"find / -xdev -type d \( -perm -0002 -a ! -perm -1000 \)";
+            string worldWritableFilesCmd = "find / -xdev -type f -perm -o+w";
+            string noUserOrGroupFilesCmd;
+            if (imageData.OS.Contains("alpine"))
+            {
+                // BusyBox in Alpine doesn't support the more convenient -nouser and -nogroup options for the find command
+                noUserOrGroupFilesCmd = @"find / -xdev -exec stat -c %U-%n {} \+ | { grep ^UNKNOWN || true; }";
+            }
+            else
+            {
+                noUserOrGroupFilesCmd = @"find / -xdev \( -nouser -o -nogroup \)";
+            }
+
+            string command = $"/bin/sh -c \"{worldWritableDirectoriesWithoutStickyBitCmd} && {worldWritableFilesCmd} && {noUserOrGroupFilesCmd}\"";
+
+            string output = DockerHelper.Run(
+                image: imageData.GetImage(ImageType, DockerHelper),
+                name: imageData.GetIdentifier($"InsecureFiles-{ImageType}"),
+                command: command
+            );
+
+            Assert.Empty(output);
         }
     }
 }

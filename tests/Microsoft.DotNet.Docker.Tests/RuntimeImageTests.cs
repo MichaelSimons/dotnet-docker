@@ -10,36 +10,20 @@ using Xunit.Abstractions;
 
 namespace Microsoft.DotNet.Docker.Tests
 {
-    public class RuntimeImageTests
+    public class RuntimeImageTests : CommonRuntimeImageTests
     {
-        private readonly DockerHelper _dockerHelper;
-        private readonly ITestOutputHelper _outputHelper;
+        protected override DotNetImageType ImageType => DotNetImageType.Runtime;
 
-        public RuntimeImageTests(ITestOutputHelper outputHelper)
+        public RuntimeImageTests(ITestOutputHelper outputHelper) : base(outputHelper)
         {
-            _dockerHelper = new DockerHelper(outputHelper);
-            _outputHelper = outputHelper;
-        }
-
-        public static IEnumerable<object[]> GetImageData()
-        {
-            return TestData.GetImageData()
-                .Select(imageData => new object[] { imageData });
         }
 
         [Theory]
         [MemberData(nameof(GetImageData))]
         public async Task VerifyAppScenario(ImageData imageData)
         {
-            ImageScenarioVerifier verifier = new ImageScenarioVerifier(imageData, _dockerHelper, _outputHelper);
+            ImageScenarioVerifier verifier = new ImageScenarioVerifier(imageData, DockerHelper, OutputHelper);
             await verifier.Execute();
-        }
-
-        [Theory]
-        [MemberData(nameof(GetImageData))]
-        public void VerifyEnvironmentVariables(ImageData imageData)
-        {
-            EnvironmentVariableInfo.VerifyCommonRuntimeEnvironmentVariables(DotNetImageType.Runtime, imageData, _dockerHelper);
         }
     }
 }

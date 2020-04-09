@@ -5,7 +5,7 @@ ARG REPO=mcr.microsoft.com/dotnet/core/runtime-deps
 # Installer image
 FROM $REPO:5.0-alpine3.11 as installer
 
-ENV DOTNET_VERSION 5.0.0-preview.2.20160.6
+ENV DOTNET_VERSION 5.0.0-preview.4.20209.4
 
 # Install crossgen2
 RUN wget -O crossgen2.tar.gz https://dotnetbinaries.blob.core.windows.net/dockerassets/microsoft.netcore.app.crossgen2.linux-musl-x64.$DOTNET_VERSION.tar.gz \
@@ -15,7 +15,7 @@ RUN wget -O crossgen2.tar.gz https://dotnetbinaries.blob.core.windows.net/docker
     && tar -C /crossgen2 -oxzf crossgen2.tar.gz \
     && rm crossgen2.tar.gz
 
-ENV ASPNET_VERSION 5.0.0-preview.2.20167.3
+ENV ASPNET_VERSION 5.0.0-preview.4.20206.19
 
 RUN \
     # Retrieve .NET and ASP.NET
@@ -52,8 +52,8 @@ RUN \
 # ASP.NET image
 FROM $REPO:5.0-alpine3.11
 
-ENV DOTNET_VERSION=5.0.0-preview.2.20160.6 \
-    ASPNET_VERSION=5.0.0-preview.2.20167.3
+ENV DOTNET_VERSION=5.0.0-preview.4.20209.4
+    ASPNET_VERSION=5.0.0-preview.4.20206.19
 
 COPY --from=installer ["/dotnet", "/usr/share/dotnet"]
 RUN ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet

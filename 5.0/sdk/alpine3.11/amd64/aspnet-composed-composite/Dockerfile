@@ -4,7 +4,7 @@ FROM $REPO:5.0-alpine3.11-composed-composite
 ENV \
     # Unset the value from the base image
     ASPNETCORE_URLS= \
-    DOTNET_SDK_VERSION=5.0.100-preview.2.20175.2 \
+    DOTNET_SDK_VERSION=5.0.100-preview.4.20209.3
     # Disable the invariant mode (set in base image)
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
     # Enable correct mode for dotnet watch (only mode supported in a container)

@@ -7,7 +7,7 @@ namespace Dotnet.Docker
 {
     public static class VariableHelper
     {
-        public const string AspNetVersionName = "aspnetcore_version";
+        public const string AspNetVersionName = "aspnet_version";
         public const string DotnetVersionName = "dotnet_version";
         public const string DotnetSdkVersionName = "dotnet_sdk_version";
         public const string ValueGroupName = "value";
@@ -21,11 +21,12 @@ namespace Dotnet.Docker
             string lowerCasedVariableGroup = string.Format(variableGroupFormat, joinedVariableNames.ToLowerInvariant());
 
             string envPattern = $"ENV {upperCasedVariableGroup} (?<{ValueGroupName}>[^\r\n]*)";
+            string multiEnvPattern = $" {upperCasedVariableGroup}=(?<{ValueGroupName}>[^\r\n]*)";
             string linuxPattern = $"\\b{lowerCasedVariableGroup}=(?<{ValueGroupName}>[^\\s]*)";
             string windowsPowerShellPattern = $"\\${lowerCasedVariableGroup} = '(?<{ValueGroupName}>[^\\s]*)'";
             string windowsCmdPattern = $"\\bset \"{lowerCasedVariableGroup}=(?<{ValueGroupName}>[^\\s]*)\"";
 
-            return new Regex($"{envPattern}|{linuxPattern}|{windowsPowerShellPattern}|{windowsCmdPattern}");
+            return new Regex($"{envPattern}|{multiEnvPattern}|{linuxPattern}|{windowsPowerShellPattern}|{windowsCmdPattern}");
         }
     }
 }

@@ -13,7 +13,7 @@ RUN wget -O crossgen2.tar.gz https://dotnetbinaries.blob.core.windows.net/docker
     && tar -C /crossgen2 -oxzf crossgen2.tar.gz \
     && rm crossgen2.tar.gz
 
-ENV ASPNET_VERSION 5.0.0-preview.2.20167.3
+ENV ASPNET_VERSION 5.0.0-preview.4.20206.19
 
 RUN \
     # Retrieve ASP.NET
@@ -34,6 +34,6 @@ RUN \
 # ASP.NET Core image
 FROM $REPO:5.0-alpine3.11-composite
 
-ENV ASPNET_VERSION 5.0.0-preview.2.20167.3
+ENV ASPNET_VERSION 5.0.0-preview.4.20206.19
 
 COPY --from=installer ["/usr/share/dotnet/shared/Microsoft.AspNetCore.App", "/usr/share/dotnet/shared/Microsoft.AspNetCore.App"]

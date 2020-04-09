@@ -6,7 +6,7 @@ FROM mcr.microsoft.com/windows/servercore:1909 AS installer
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Retrieve .NET Core SDK
-RUN $dotnet_sdk_version = '5.0.100-preview.2.20175.2'; `
+RUN $dotnet_sdk_version = '5.0.100-preview.4.20209.3'; `
     Invoke-WebRequest -OutFile dotnet.zip https://dotnetcli.azureedge.net/dotnet/Sdk/$dotnet_sdk_version/dotnet-sdk-$dotnet_sdk_version-win-x64.zip; `
     $dotnet_sha512 = '8cef3dacae84ca692e945a3763ec021b70f056b63c08784f803cab9b4a7d52772a0d834b92f4b591701d5f3b6d8aa364c96f066cae87ec2c32946f9066ab7c91'; `
     if ((Get-FileHash dotnet.zip -Algorithm sha512).Hash -ne $dotnet_sha512) { `

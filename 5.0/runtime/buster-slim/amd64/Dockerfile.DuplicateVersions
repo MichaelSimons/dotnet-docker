@@ -16,6 +16,8 @@ RUN dotnet_version=5.0.0-preview.3.20209.5 \
 # .NET Core runtime image
 FROM $REPO:5.0-buster-slim
 
+ENV DOTNET_VERSION 5.0.0-preview.3.20209.5
+
 COPY --from=installer ["/dotnet", "/usr/share/dotnet"]
 
 RUN ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet

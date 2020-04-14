@@ -3,7 +3,6 @@ ARG DOTNET_VERSION=5.0.0-preview.3.20209.5
 
 # Installer image
 FROM buildpack-deps:buster-curl as installer
-
 ARG DOTNET_VERSION
 
 # Retrieve .NET Core
@@ -17,8 +16,8 @@ RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Runti
 
 # .NET Core runtime image
 FROM $REPO:5.0-buster-slim
-
 ARG DOTNET_VERSION
+
 ENV DOTNET_VERSION $DOTNET_VERSION
 
 COPY --from=installer ["/dotnet", "/usr/share/dotnet"]

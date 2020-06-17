@@ -33,6 +33,9 @@
                 "2.1-stretch-slim": {
                   "documentationGroup": "2.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.stretch-slim"
               }
             },
             {
@@ -47,6 +50,9 @@
                 "2.1-stretch-slim-arm32v7": {
                   "documentationGroup": "2.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.stretch-slim"
               },
               "variant": "v7"
             }
@@ -66,6 +72,9 @@
                 "2.1-alpine3.11": {
                   "documentationGroup": "2.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.alpine"
               }
             }
           ]
@@ -90,6 +99,9 @@
                 "2.1-alpine": {
                   "documentationGroup": "2.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.alpine"
               }
             }
           ]
@@ -108,6 +120,9 @@
                 "2.1-bionic": {
                   "documentationGroup": "2.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.bionic"
               }
             }
           ]
@@ -128,6 +143,9 @@
                   "documentationGroup": "2.1"
                 }
               },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.bionic"
+              },
               "variant": "v7"
             }
           ]
@@ -146,6 +164,9 @@
                 "2.1-focal": {
                   "documentationGroup": "2.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.linux"
               }
             }
           ]
@@ -172,6 +193,9 @@
                 "3.1-buster-slim": {
                   "documentationGroup": "3.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.buster-slim"
               }
             },
             {
@@ -187,6 +211,9 @@
                   "documentationGroup": "3.1"
                 }
               },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.buster-slim"
+              },
               "variant": "v7"
             },
             {
@@ -201,6 +228,9 @@
                 "3.1-buster-slim-arm64v8": {
                   "documentationGroup": "3.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.buster-slim"
               },
               "variant": "v8"
             }
@@ -220,6 +250,9 @@
                 "3.1-alpine3.11": {
                   "documentationGroup": "3.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.alpine"
               }
             }
           ]
@@ -239,6 +272,9 @@
                 "3.1-alpine3.11-arm64v8": {
                   "documentationGroup": "3.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.alpine"
               },
               "variant": "v8"
             }
@@ -264,6 +300,9 @@
                 "3.1-alpine": {
                   "documentationGroup": "3.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.alpine"
               }
             }
           ]
@@ -290,6 +329,9 @@
                   "documentationGroup": "3.1"
                 }
               },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.alpine"
+              },
               "variant": "v8"
             }
           ]
@@ -308,6 +350,9 @@
                 "3.1-bionic": {
                   "documentationGroup": "3.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.bionic"
               }
             }
           ]
@@ -327,6 +372,9 @@
                 "3.1-bionic-arm32v7": {
                   "documentationGroup": "3.1"
                 }
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.bionic"
               },
               "variant": "v7"
             }
@@ -348,6 +396,9 @@
                   "documentationGroup": "3.1"
                 }
               },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.bionic"
+              },
               "variant": "v8"
             }
           ]
@@ -362,6 +413,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-focal": {},
                 "3.1-focal": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.focal"
               }
             }
           ]
@@ -377,6 +431,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-focal-arm64v8": {},
                 "3.1-focal-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.focal"
               },
               "variant": "v8"
             }
@@ -405,6 +462,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-buster-slim": {},
                 "5.0-buster-slim": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.buster-slim"
               }
             },
             {
@@ -416,6 +476,9 @@
                 "$(dotnet|5.0|product-version)-buster-slim-arm32v7": {},
                 "5.0-buster-slim-arm32v7": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.buster-slim"
+              },
               "variant": "v7"
             },
             {
@@ -426,6 +489,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-buster-slim-arm64v8": {},
                 "5.0-buster-slim-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.buster-slim"
               },
               "variant": "v8"
             }
@@ -443,6 +509,9 @@
                 "5.0-alpine3.12": {},
                 "$(dotnet|5.0|product-version)-alpine": {},
                 "5.0-alpine": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.alpine"
               }
             }
           ]
@@ -461,6 +530,9 @@
                 "$(dotnet|5.0|product-version)-alpine-arm64v8": {},
                 "5.0-alpine-arm64v8": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.alpine"
+              },
               "variant": "v8"
             }
           ]
@@ -475,6 +547,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-focal": {},
                 "5.0-focal": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.focal"
               }
             }
           ]
@@ -490,6 +565,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-focal-arm64v8": {},
                 "5.0-focal-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.focal"
               },
               "variant": "v8"
             }
@@ -520,6 +598,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-stretch-slim": {},
                 "2.1-stretch-slim": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/2.1/Dockerfile.linux"
               }
             },
             {
@@ -534,6 +615,9 @@
                 "$(dotnet|2.1|product-version)-stretch-slim-arm32v7": {},
                 "2.1-stretch-slim-arm32v7": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/2.1/Dockerfile.linux"
+              },
               "variant": "v7"
             },
             {
@@ -543,6 +627,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-nanoserver-1809": {},
                 "2.1-nanoserver-1809": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/2.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -552,6 +639,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-nanoserver-1903": {},
                 "2.1-nanoserver-1903": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/2.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -561,6 +651,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-nanoserver-1909": {},
                 "2.1-nanoserver-1909": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/2.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -570,6 +663,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-nanoserver-2004": {},
                 "2.1-nanoserver-2004": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/2.1/Dockerfile.nanoserver"
               }
             }
           ]
@@ -587,6 +683,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-alpine3.11": {},
                 "2.1-alpine3.11": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/2.1/Dockerfile.alpine"
               }
             }
           ]
@@ -606,6 +705,9 @@
                 "2.1-alpine3.12": {},
                 "$(dotnet|2.1|product-version)-alpine": {},
                 "2.1-alpine": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/2.1/Dockerfile.alpine"
               }
             }
           ]
@@ -623,6 +725,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-bionic": {},
                 "2.1-bionic": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/2.1/Dockerfile.linux"
               }
             }
           ]
@@ -642,6 +747,9 @@
                 "$(dotnet|2.1|product-version)-bionic-arm32v7": {},
                 "2.1-bionic-arm32v7": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/2.1/Dockerfile.linux"
+              },
               "variant": "v7"
             }
           ]
@@ -659,6 +767,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-focal": {},
                 "2.1-focal": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/2.1/Dockerfile.linux"
               }
             }
           ]
@@ -680,6 +791,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-buster-slim": {},
                 "3.1-buster-slim": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.linux"
               }
             },
             {
@@ -693,6 +807,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-buster-slim-arm32v7": {},
                 "3.1-buster-slim-arm32v7": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.linux"
               },
               "variant": "v7"
             },
@@ -708,6 +825,9 @@
                 "$(dotnet|3.1|product-version)-buster-slim-arm64v8": {},
                 "3.1-buster-slim-arm64v8": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.linux"
+              },
               "variant": "v8"
             },
             {
@@ -717,6 +837,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-nanoserver-1809": {},
                 "3.1-nanoserver-1809": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -726,6 +849,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-nanoserver-1903": {},
                 "3.1-nanoserver-1903": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -735,6 +861,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-nanoserver-1909": {},
                 "3.1-nanoserver-1909": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -744,6 +873,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-nanoserver-2004": {},
                 "3.1-nanoserver-2004": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.nanoserver"
               }
             }
           ]
@@ -761,6 +893,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-alpine3.11": {},
                 "3.1-alpine3.11": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.alpine"
               }
             }
           ]
@@ -779,6 +914,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-alpine3.11-arm64v8": {},
                 "3.1-alpine3.11-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.alpine"
               },
               "variant": "v8",
               "customBuildLegGrouping": [
@@ -807,6 +945,9 @@
                 "3.1-alpine3.12": {},
                 "$(dotnet|3.1|product-version)-alpine": {},
                 "3.1-alpine": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.alpine"
               }
             }
           ]
@@ -827,6 +968,9 @@
                 "3.1-alpine3.12-arm64v8": {},
                 "$(dotnet|3.1|product-version)-alpine-arm64v8": {},
                 "3.1-alpine-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.alpine"
               },
               "variant": "v8",
               "customBuildLegGrouping": [
@@ -853,6 +997,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-bionic": {},
                 "3.1-bionic": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.linux"
               }
             }
           ]
@@ -871,6 +1018,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-bionic-arm32v7": {},
                 "3.1-bionic-arm32v7": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.linux"
               },
               "variant": "v7"
             }
@@ -891,6 +1041,9 @@
                 "$(dotnet|3.1|product-version)-bionic-arm64v8": {},
                 "3.1-bionic-arm64v8": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.linux"
+              },
               "variant": "v8"
             }
           ]
@@ -908,6 +1061,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-focal": {},
                 "3.1-focal": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.linux"
               }
             }
           ]
@@ -926,6 +1082,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-focal-arm64v8": {},
                 "3.1-focal-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/3.1/Dockerfile.linux"
               },
               "variant": "v8"
             }
@@ -957,6 +1116,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-buster-slim": {},
                 "5.0-buster-slim": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/5.0/Dockerfile.linux"
               }
             },
             {
@@ -970,6 +1132,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-buster-slim-arm32v7": {},
                 "5.0-buster-slim-arm32v7": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/5.0/Dockerfile.linux"
               },
               "variant": "v7"
             },
@@ -985,6 +1150,9 @@
                 "$(dotnet|5.0|product-version)-buster-slim-arm64v8": {},
                 "5.0-buster-slim-arm64v8": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/5.0/Dockerfile.linux"
+              },
               "variant": "v8"
             },
             {
@@ -994,6 +1162,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-nanoserver-1809": {},
                 "5.0-nanoserver-1809": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/5.0/Dockerfile.nanoserver"
               }
             },
             {
@@ -1003,6 +1174,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-nanoserver-1903": {},
                 "5.0-nanoserver-1903": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/5.0/Dockerfile.nanoserver"
               }
             },
             {
@@ -1012,6 +1186,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-nanoserver-1909": {},
                 "5.0-nanoserver-1909": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/5.0/Dockerfile.nanoserver"
               }
             },
             {
@@ -1021,6 +1198,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-nanoserver-2004": {},
                 "5.0-nanoserver-2004": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/5.0/Dockerfile.nanoserver"
               }
             }
           ]
@@ -1040,6 +1220,9 @@
                 "5.0-alpine3.12": {},
                 "$(dotnet|5.0|product-version)-alpine": {},
                 "5.0-alpine": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/5.0/Dockerfile.alpine"
               }
             }
           ]
@@ -1060,6 +1243,9 @@
                 "5.0-alpine3.12-arm64v8": {},
                 "$(dotnet|5.0|product-version)-alpine-arm64v8": {},
                 "5.0-alpine-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/5.0/Dockerfile.alpine"
               },
               "variant": "v8",
               "customBuildLegGrouping": [
@@ -1086,6 +1272,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-focal": {},
                 "5.0-focal": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/5.0/Dockerfile.linux"
               }
             }
           ]
@@ -1104,6 +1293,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-focal-arm64v8": {},
                 "5.0-focal-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/runtime/5.0/Dockerfile.linux"
               },
               "variant": "v8"
             }
@@ -1134,6 +1326,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-stretch-slim": {},
                 "2.1-stretch-slim": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/2.1/Dockerfile.linux"
               }
             },
             {
@@ -1148,6 +1343,9 @@
                 "$(dotnet|2.1|product-version)-stretch-slim-arm32v7": {},
                 "2.1-stretch-slim-arm32v7": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/2.1/Dockerfile.linux"
+              },
               "variant": "v7"
             },
             {
@@ -1157,6 +1355,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-nanoserver-1809": {},
                 "2.1-nanoserver-1809": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/2.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1166,6 +1367,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-nanoserver-1903": {},
                 "2.1-nanoserver-1903": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/2.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1175,6 +1379,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-nanoserver-1909": {},
                 "2.1-nanoserver-1909": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/2.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1184,6 +1391,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-nanoserver-2004": {},
                 "2.1-nanoserver-2004": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/2.1/Dockerfile.nanoserver"
               }
             }
           ]
@@ -1201,6 +1411,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-alpine3.11": {},
                 "2.1-alpine3.11": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/2.1/Dockerfile.alpine"
               }
             }
           ]
@@ -1220,6 +1433,9 @@
                 "2.1-alpine3.12": {},
                 "$(dotnet|2.1|product-version)-alpine": {},
                 "2.1-alpine": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/2.1/Dockerfile.alpine"
               }
             }
           ]
@@ -1237,6 +1453,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-bionic": {},
                 "2.1-bionic": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/2.1/Dockerfile.linux"
               }
             }
           ]
@@ -1256,6 +1475,9 @@
                 "$(dotnet|2.1|product-version)-bionic-arm32v7": {},
                 "2.1-bionic-arm32v7": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/2.1/Dockerfile.linux"
+              },
               "variant": "v7"
             }
           ]
@@ -1273,6 +1495,9 @@
               "tags": {
                 "$(dotnet|2.1|product-version)-focal": {},
                 "2.1-focal": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/2.1/Dockerfile.linux"
               }
             }
           ]
@@ -1294,6 +1519,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-buster-slim": {},
                 "3.1-buster-slim": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.linux"
               }
             },
             {
@@ -1307,6 +1535,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-buster-slim-arm32v7": {},
                 "3.1-buster-slim-arm32v7": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.linux"
               },
               "variant": "v7"
             },
@@ -1322,6 +1553,9 @@
                 "$(dotnet|3.1|product-version)-buster-slim-arm64v8": {},
                 "3.1-buster-slim-arm64v8": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.linux"
+              },
               "variant": "v8"
             },
             {
@@ -1334,6 +1568,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-nanoserver-1809": {},
                 "3.1-nanoserver-1809": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1346,6 +1583,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-nanoserver-1903": {},
                 "3.1-nanoserver-1903": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1358,6 +1598,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-nanoserver-1909": {},
                 "3.1-nanoserver-1909": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1370,6 +1613,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-nanoserver-2004": {},
                 "3.1-nanoserver-2004": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.nanoserver"
               }
             }
           ]
@@ -1387,6 +1633,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-alpine3.11": {},
                 "3.1-alpine3.11": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.alpine"
               }
             }
           ]
@@ -1405,6 +1654,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-alpine3.11-arm64v8": {},
                 "3.1-alpine3.11-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.alpine"
               },
               "variant": "v8",
               "customBuildLegGrouping": [
@@ -1433,6 +1685,9 @@
                 "3.1-alpine3.12": {},
                 "$(dotnet|3.1|product-version)-alpine": {},
                 "3.1-alpine": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.alpine"
               }
             }
           ]
@@ -1453,6 +1708,9 @@
                 "3.1-alpine3.12-arm64v8": {},
                 "$(dotnet|3.1|product-version)-alpine-arm64v8": {},
                 "3.1-alpine-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.alpine"
               },
               "variant": "v8",
               "customBuildLegGrouping": [
@@ -1479,6 +1737,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-bionic": {},
                 "3.1-bionic": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.linux"
               }
             }
           ]
@@ -1497,6 +1758,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-bionic-arm32v7": {},
                 "3.1-bionic-arm32v7": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.linux"
               },
               "variant": "v7"
             }
@@ -1517,6 +1781,9 @@
                 "$(dotnet|3.1|product-version)-bionic-arm64v8": {},
                 "3.1-bionic-arm64v8": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.linux"
+              },
               "variant": "v8"
             }
           ]
@@ -1534,6 +1801,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-focal": {},
                 "3.1-focal": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.linux"
               }
             }
           ]
@@ -1552,6 +1822,9 @@
               "tags": {
                 "$(dotnet|3.1|product-version)-focal-arm64v8": {},
                 "3.1-focal-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/3.1/Dockerfile.linux"
               },
               "variant": "v8"
             }
@@ -1583,6 +1856,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-buster-slim": {},
                 "5.0-buster-slim": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/5.0/Dockerfile.linux"
               }
             },
             {
@@ -1596,6 +1872,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-buster-slim-arm32v7": {},
                 "5.0-buster-slim-arm32v7": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/5.0/Dockerfile.linux"
               },
               "variant": "v7"
             },
@@ -1611,6 +1890,9 @@
                 "$(dotnet|5.0|product-version)-buster-slim-arm64v8": {},
                 "5.0-buster-slim-arm64v8": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/5.0/Dockerfile.linux"
+              },
               "variant": "v8"
             },
             {
@@ -1623,6 +1905,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-nanoserver-1809": {},
                 "5.0-nanoserver-1809": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/5.0/Dockerfile.nanoserver"
               }
             },
             {
@@ -1635,6 +1920,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-nanoserver-1903": {},
                 "5.0-nanoserver-1903": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/5.0/Dockerfile.nanoserver"
               }
             },
             {
@@ -1647,6 +1935,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-nanoserver-1909": {},
                 "5.0-nanoserver-1909": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/5.0/Dockerfile.nanoserver"
               }
             },
             {
@@ -1659,6 +1950,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-nanoserver-2004": {},
                 "5.0-nanoserver-2004": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/5.0/Dockerfile.nanoserver"
               }
             }
           ]
@@ -1678,6 +1972,9 @@
                 "5.0-alpine3.12": {},
                 "$(dotnet|5.0|product-version)-alpine": {},
                 "5.0-alpine": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/5.0/Dockerfile.alpine"
               }
             }
           ]
@@ -1698,6 +1995,9 @@
                 "5.0-alpine3.12-arm64v8": {},
                 "$(dotnet|5.0|product-version)-alpine-arm64v8": {},
                 "5.0-alpine-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/5.0/Dockerfile.alpine"
               },
               "variant": "v8",
               "customBuildLegGrouping": [
@@ -1724,6 +2024,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-focal": {},
                 "5.0-focal": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/5.0/Dockerfile.linux"
               }
             }
           ]
@@ -1742,6 +2045,9 @@
               "tags": {
                 "$(dotnet|5.0|product-version)-focal-arm64v8": {},
                 "5.0-focal-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/aspnet/5.0/Dockerfile.linux"
               },
               "variant": "v8"
             }
@@ -1769,6 +2075,9 @@
               "tags": {
                 "$(sdk|2.1|product-version)-stretch": {},
                 "2.1-stretch": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.stretch"
               }
             },
             {
@@ -1780,6 +2089,9 @@
                 "$(sdk|2.1|product-version)-stretch-arm32v7": {},
                 "2.1-stretch-arm32v7": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.stretch"
+              },
               "variant": "v7"
             },
             {
@@ -1789,6 +2101,9 @@
               "tags": {
                 "$(sdk|2.1|product-version)-nanoserver-1809": {},
                 "2.1-nanoserver-1809": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1798,6 +2113,9 @@
               "tags": {
                 "$(sdk|2.1|product-version)-nanoserver-1903": {},
                 "2.1-nanoserver-1903": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1807,6 +2125,9 @@
               "tags": {
                 "$(sdk|2.1|product-version)-nanoserver-1909": {},
                 "2.1-nanoserver-1909": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1816,6 +2137,9 @@
               "tags": {
                 "$(sdk|2.1|product-version)-nanoserver-2004": {},
                 "2.1-nanoserver-2004": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.nanoserver"
               }
             }
           ]
@@ -1833,6 +2157,9 @@
               "tags": {
                 "$(sdk|2.1|product-version)-alpine3.11": {},
                 "2.1-alpine3.11": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.alpine"
               }
             }
           ]
@@ -1852,6 +2179,9 @@
                 "2.1-alpine3.12": {},
                 "$(sdk|2.1|product-version)-alpine": {},
                 "2.1-alpine": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.alpine"
               }
             }
           ]
@@ -1866,6 +2196,9 @@
               "tags": {
                 "$(sdk|2.1|product-version)-bionic": {},
                 "2.1-bionic": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.bionic"
               }
             }
           ]
@@ -1882,6 +2215,9 @@
                 "$(sdk|2.1|product-version)-bionic-arm32v7": {},
                 "2.1-bionic-arm32v7": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.bionic"
+              },
               "variant": "v7"
             }
           ]
@@ -1896,6 +2232,9 @@
               "tags": {
                 "$(sdk|2.1|product-version)-focal": {},
                 "2.1-focal": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.focal"
               }
             }
           ]
@@ -1914,6 +2253,9 @@
               "tags": {
                 "$(sdk|3.1|product-version)-buster": {},
                 "3.1-buster": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.buster"
               }
             },
             {
@@ -1925,6 +2267,9 @@
                 "$(sdk|3.1|product-version)-buster-arm32v7": {},
                 "3.1-buster-arm32v7": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.buster"
+              },
               "variant": "v7"
             },
             {
@@ -1935,6 +2280,9 @@
               "tags": {
                 "$(sdk|3.1|product-version)-buster-arm64v8": {},
                 "3.1-buster-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.buster"
               },
               "variant": "v8"
             },
@@ -1948,6 +2296,9 @@
               "tags": {
                 "$(sdk|3.1|product-version)-nanoserver-1809": {},
                 "3.1-nanoserver-1809": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1960,6 +2311,9 @@
               "tags": {
                 "$(sdk|3.1|product-version)-nanoserver-1903": {},
                 "3.1-nanoserver-1903": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1972,6 +2326,9 @@
               "tags": {
                 "$(sdk|3.1|product-version)-nanoserver-1909": {},
                 "3.1-nanoserver-1909": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.nanoserver"
               }
             },
             {
@@ -1984,6 +2341,9 @@
               "tags": {
                 "$(sdk|3.1|product-version)-nanoserver-2004": {},
                 "3.1-nanoserver-2004": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.nanoserver"
               }
             }
           ]
@@ -2001,6 +2361,9 @@
               "tags": {
                 "$(sdk|3.1|product-version)-alpine3.11": {},
                 "3.1-alpine3.11": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.alpine"
               }
             }
           ]
@@ -2020,6 +2383,9 @@
                 "3.1-alpine3.12": {},
                 "$(sdk|3.1|product-version)-alpine": {},
                 "3.1-alpine": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.alpine"
               }
             }
           ]
@@ -2034,6 +2400,9 @@
               "tags": {
                 "$(sdk|3.1|product-version)-bionic": {},
                 "3.1-bionic": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.bionic"
               }
             }
           ]
@@ -2049,6 +2418,9 @@
               "tags": {
                 "$(sdk|3.1|product-version)-bionic-arm32v7": {},
                 "3.1-bionic-arm32v7": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.bionic"
               },
               "variant": "v7"
             }
@@ -2066,6 +2438,9 @@
                 "$(sdk|3.1|product-version)-bionic-arm64v8": {},
                 "3.1-bionic-arm64v8": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.bionic"
+              },
               "variant": "v8"
             }
           ]
@@ -2080,6 +2455,9 @@
               "tags": {
                 "$(sdk|3.1|product-version)-focal": {},
                 "3.1-focal": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.focal"
               }
             }
           ]
@@ -2095,6 +2473,9 @@
               "tags": {
                 "$(sdk|3.1|product-version)-focal-arm64v8": {},
                 "3.1-focal-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.focal"
               },
               "variant": "v8"
             }
@@ -2126,6 +2507,9 @@
               "tags": {
                 "$(sdk|5.0|product-version)-buster-slim": {},
                 "5.0-buster-slim": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/5.0/Dockerfile.linux"
               }
             },
             {
@@ -2139,6 +2523,9 @@
               "tags": {
                 "$(sdk|5.0|product-version)-buster-slim-arm32v7": {},
                 "5.0-buster-slim-arm32v7": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/5.0/Dockerfile.linux"
               },
               "variant": "v7"
             },
@@ -2154,6 +2541,9 @@
                 "$(sdk|5.0|product-version)-buster-slim-arm64v8": {},
                 "5.0-buster-slim-arm64v8": {}
               },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/5.0/Dockerfile.linux"
+              },
               "variant": "v8"
             },
             {
@@ -2166,6 +2556,9 @@
               "tags": {
                 "$(sdk|5.0|product-version)-nanoserver-1809": {},
                 "5.0-nanoserver-1809": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/5.0/Dockerfile.nanoserver"
               }
             },
             {
@@ -2178,6 +2571,9 @@
               "tags": {
                 "$(sdk|5.0|product-version)-nanoserver-1903": {},
                 "5.0-nanoserver-1903": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/5.0/Dockerfile.nanoserver"
               }
             },
             {
@@ -2190,6 +2586,9 @@
               "tags": {
                 "$(sdk|5.0|product-version)-nanoserver-1909": {},
                 "5.0-nanoserver-1909": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/5.0/Dockerfile.nanoserver"
               }
             },
             {
@@ -2202,6 +2601,9 @@
               "tags": {
                 "$(sdk|5.0|product-version)-nanoserver-2004": {},
                 "5.0-nanoserver-2004": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/5.0/Dockerfile.nanoserver"
               }
             }
           ]
@@ -2221,6 +2623,9 @@
                 "5.0-alpine3.12": {},
                 "$(sdk|5.0|product-version)-alpine": {},
                 "5.0-alpine": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/5.0/Dockerfile.alpine"
               }
             }
           ]
@@ -2238,6 +2643,9 @@
               "tags": {
                 "$(sdk|5.0|product-version)-focal": {},
                 "5.0-focal": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/5.0/Dockerfile.linux"
               }
             }
           ]
@@ -2256,6 +2664,9 @@
               "tags": {
                 "$(sdk|5.0|product-version)-focal-arm64v8": {},
                 "5.0-focal-arm64v8": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/sdk/5.0/Dockerfile.linux"
               },
               "variant": "v8"
             }
@@ -2288,6 +2699,9 @@
               "tags": {
                 "$(monitor|5.0|product-version)-alpine": {},
                 "5.0-alpine": {}
+              },
+              "template": {
+                "path": "eng/dockerfile-templates/monitor/5.0/Dockerfile.alpine"
               }
             }
           ]

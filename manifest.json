@@ -35,7 +35,7 @@
                 }
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.stretch-slim"
+                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.linux"
               }
             },
             {
@@ -52,7 +52,7 @@
                 }
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.stretch-slim"
+                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.linux"
               },
               "variant": "v7"
             }
@@ -122,7 +122,7 @@
                 }
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.bionic"
+                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.linux"
               }
             }
           ]
@@ -144,7 +144,7 @@
                 }
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.bionic"
+                "path": "eng/dockerfile-templates/runtime-deps/2.1/Dockerfile.linux"
               },
               "variant": "v7"
             }
@@ -195,7 +195,7 @@
                 }
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.buster-slim"
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.linux"
               }
             },
             {
@@ -212,7 +212,7 @@
                 }
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.buster-slim"
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.linux"
               },
               "variant": "v7"
             },
@@ -230,7 +230,7 @@
                 }
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.buster-slim"
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.linux"
               },
               "variant": "v8"
             }
@@ -352,7 +352,7 @@
                 }
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.bionic"
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.linux"
               }
             }
           ]
@@ -374,7 +374,7 @@
                 }
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.bionic"
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.linux"
               },
               "variant": "v7"
             }
@@ -397,7 +397,7 @@
                 }
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.bionic"
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.linux"
               },
               "variant": "v8"
             }
@@ -415,7 +415,7 @@
                 "3.1-focal": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.focal"
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.linux"
               }
             }
           ]
@@ -433,7 +433,7 @@
                 "3.1-focal-arm64v8": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.focal"
+                "path": "eng/dockerfile-templates/runtime-deps/3.1/Dockerfile.linux"
               },
               "variant": "v8"
             }
@@ -464,7 +464,7 @@
                 "5.0-buster-slim": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.buster-slim"
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.linux"
               }
             },
             {
@@ -477,7 +477,7 @@
                 "5.0-buster-slim-arm32v7": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.buster-slim"
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.linux"
               },
               "variant": "v7"
             },
@@ -491,7 +491,7 @@
                 "5.0-buster-slim-arm64v8": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.buster-slim"
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.linux"
               },
               "variant": "v8"
             }
@@ -549,7 +549,7 @@
                 "5.0-focal": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.focal"
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.linux"
               }
             }
           ]
@@ -567,7 +567,7 @@
                 "5.0-focal-arm64v8": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.focal"
+                "path": "eng/dockerfile-templates/runtime-deps/5.0/Dockerfile.linux"
               },
               "variant": "v8"
             }
@@ -2077,7 +2077,7 @@
                 "2.1-stretch": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.stretch"
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.linux"
               }
             },
             {
@@ -2090,7 +2090,7 @@
                 "2.1-stretch-arm32v7": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.stretch"
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.linux"
               },
               "variant": "v7"
             },
@@ -2198,7 +2198,7 @@
                 "2.1-bionic": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.bionic"
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.linux"
               }
             }
           ]
@@ -2216,7 +2216,7 @@
                 "2.1-bionic-arm32v7": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.bionic"
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.linux"
               },
               "variant": "v7"
             }
@@ -2234,7 +2234,7 @@
                 "2.1-focal": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.focal"
+                "path": "eng/dockerfile-templates/sdk/2.1/Dockerfile.linux"
               }
             }
           ]
@@ -2255,7 +2255,7 @@
                 "3.1-buster": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.buster"
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.linux"
               }
             },
             {
@@ -2268,7 +2268,7 @@
                 "3.1-buster-arm32v7": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.buster"
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.linux"
               },
               "variant": "v7"
             },
@@ -2282,7 +2282,7 @@
                 "3.1-buster-arm64v8": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.buster"
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.linux"
               },
               "variant": "v8"
             },
@@ -2402,7 +2402,7 @@
                 "3.1-bionic": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.bionic"
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.linux"
               }
             }
           ]
@@ -2420,7 +2420,7 @@
                 "3.1-bionic-arm32v7": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.bionic"
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.linux"
               },
               "variant": "v7"
             }
@@ -2439,7 +2439,7 @@
                 "3.1-bionic-arm64v8": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.bionic"
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.linux"
               },
               "variant": "v8"
             }
@@ -2457,7 +2457,7 @@
                 "3.1-focal": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.focal"
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.linux"
               }
             }
           ]
@@ -2475,7 +2475,7 @@
                 "3.1-focal-arm64v8": {}
               },
               "template": {
-                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.focal"
+                "path": "eng/dockerfile-templates/sdk/3.1/Dockerfile.linux"
               },
               "variant": "v8"
             }

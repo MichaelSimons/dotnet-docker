@@ -1,16 +1,15 @@
-FROM {{ARCH_VERSIONED}}/ubuntu:bionic
+FROM {{ARCH_VERSIONED}}/{{if OS_VERSION = "buster-slim":debian^else:ubuntu}}:{{OS_VERSION}}
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+    &&{{if OS_VERSION = "focal": DEBIAN_FRONTEND=noninteractive}} apt-get install -y --no-install-recommends \
         ca-certificates \
         \
 # .NET Core dependencies
         libc6 \
         libgcc1 \
         libgssapi-krb5-2 \
-        libicu60 \
-        liblttng-ust0 \
-        libssl1.0.0 \
+        libicu{{if OS_VERSION = "bionic":60^elif OS_VERSION = "buster-slim":63^elif OS_VERSION = "focal":66}} \
+        libssl1.1 \
         libstdc++6 \
         zlib1g \
     && rm -rf /var/lib/apt/lists/*

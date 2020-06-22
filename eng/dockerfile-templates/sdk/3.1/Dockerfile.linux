@@ -12,11 +12,11 @@ ENV \
 
 # Install .NET CLI dependencies
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+    &&{{if OS_VERSION = "focal": DEBIAN_FRONTEND=noninteractive}} apt-get install -y --no-install-recommends \
         libc6 \
         libgcc1 \
         libgssapi-krb5-2 \
-        libicu63 \
+        libicu{{if OS_VERSION = "bionic":60^elif OS_VERSION = "buster":63^elif OS_VERSION = "focal":66}} \
         libssl1.1 \
         libstdc++6 \
         zlib1g \

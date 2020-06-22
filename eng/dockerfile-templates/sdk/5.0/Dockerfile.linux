@@ -1,5 +1,5 @@
 ARG REPO=mcr.microsoft.com/dotnet/core/aspnet
-FROM $REPO:5.0-%%OS_VERSION%%%%ARCH_TAG_SUFFIX%%
+FROM $REPO:5.0-{{OS_VERSION}}{{ARCH_TAG_SUFFIX}}
 
 ENV \
     # Unset ASPNETCORE_URLS from aspnet base image
@@ -10,7 +10,7 @@ ENV \
     # Skip extraction of XML docs - generally not useful within an image/container - helps performance
     NUGET_XMLDOC_MODE=skip \
     # PowerShell telemetry for docker image usage
-    POWERSHELL_DISTRIBUTION_CHANNEL=PSDocker-DotnetCoreSDK-%%OS_HYPHENATED_FRIENDLY%%
+    POWERSHELL_DISTRIBUTION_CHANNEL=PSDocker-DotnetCoreSDK-{{OS_HYPHENATED_FRIENDLY}}
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -20,7 +20,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install .NET Core SDK
-RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-%%ARCH_SHORT%%.tar.gz \
+RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-{{ARCH_SHORT}}.tar.gz \
     && dotnet_sha512='90695e63b620b3a07a4d50bf0c4a60a2f110a5fe01906a9018056f889ee651e1d60eaa4328ae5f5bc7f6fdae63017999519d51d0bdb4139b011c91b9811add5f' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /usr/share/dotnet \
@@ -31,13 +31,13 @@ RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$
 
 # Install PowerShell global tool
 RUN powershell_version=7.1.0-preview.3 \
-    && curl -SL --output PowerShell.Linux.%%ARCH_NUPKG%%.$powershell_version.nupkg https://pwshtool.blob.core.windows.net/tool/$powershell_version/PowerShell.Linux.%%ARCH_NUPKG%%.$powershell_version.nupkg \
+    && curl -SL --output PowerShell.Linux.{{ARCH_NUPKG}}.$powershell_version.nupkg https://pwshtool.blob.core.windows.net/tool/$powershell_version/PowerShell.Linux.{{ARCH_NUPKG}}.$powershell_version.nupkg \
     && powershell_sha512='081300c985a7a6db5252489f49b657fe0165180c6914352472d9f29cd42f2127906b3692739815f0db19cc1e255b4385f477d43559aedfd7f51c94c3b41e6e4e' \
-    && echo "$powershell_sha512  PowerShell.Linux.%%ARCH_NUPKG%%.$powershell_version.nupkg" | sha512sum -c - \
+    && echo "$powershell_sha512  PowerShell.Linux.{{ARCH_NUPKG}}.$powershell_version.nupkg" | sha512sum -c - \
     && mkdir -p /usr/share/powershell \
-    && dotnet tool install --add-source / --tool-path /usr/share/powershell --version $powershell_version PowerShell.Linux.%%ARCH_NUPKG%% \
+    && dotnet tool install --add-source / --tool-path /usr/share/powershell --version $powershell_version PowerShell.Linux.{{ARCH_NUPKG}} \
     && dotnet nuget locals all --clear \
-    && rm PowerShell.Linux.%%ARCH_NUPKG%%.$powershell_version.nupkg \
+    && rm PowerShell.Linux.{{ARCH_NUPKG}}.$powershell_version.nupkg \
     && ln -s /usr/share/powershell/pwsh /usr/bin/pwsh \
     && chmod 755 /usr/share/powershell/pwsh \
     # To reduce image size, remove the copy nupkg that nuget keeps.

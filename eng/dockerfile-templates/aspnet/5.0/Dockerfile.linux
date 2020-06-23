@@ -7,7 +7,7 @@ ARG ASPNET_VERSION
 
 # Retrieve ASP.NET Core
 RUN curl -SL --output aspnetcore.tar.gz https://dotnetcli.azureedge.net/dotnet/aspnetcore/Runtime/$ASPNET_VERSION/aspnetcore-runtime-$ASPNET_VERSION-linux-{{ARCH_SHORT}}.tar.gz \
-    && aspnetcore_sha512='237019e067d89f0b62d68793f17607fd484a2a9e06ab2423bd31d17fc42933f0d3e1112399309c93da243b0943bcd7317b389efcf83e6cda544dab1a82101bbc' \
+    && aspnetcore_sha512='{{if ARCH_SHORT = "arm":5243d7e3e68f5d0e4ac334d00405b3a4a81b6700f5897e3a68cc388c42f70ffbfe2bb41c39466c76ad98996591e88190c079c03dbf23704be6144d763020985a^elif ARCH_SHORT = "arm64":8bcee151e9a0d41654fe641e9c949ba053394b345ff8250d591929ffb44e9163e800093d1eadfe810f608f87217e27051ddfb284969db71bb386db9ff8b2389d^else:237019e067d89f0b62d68793f17607fd484a2a9e06ab2423bd31d17fc42933f0d3e1112399309c93da243b0943bcd7317b389efcf83e6cda544dab1a82101bbc}}' \
     && echo "$aspnetcore_sha512  aspnetcore.tar.gz" | sha512sum -c - \
     && tar -ozxf aspnetcore.tar.gz ./shared/Microsoft.AspNetCore.App \
     && rm aspnetcore.tar.gz

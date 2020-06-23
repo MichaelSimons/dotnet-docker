@@ -20,7 +20,7 @@ RUN apk add --no-cache \
     git
 
 # Install .NET Core SDK
-RUN wget -O dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-musl-{{ARCH_SHORT}}.tar.gz \
+RUN wget -O dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-musl-x64.tar.gz \
     && dotnet_sha512='1ab862baaa1f3fc95ea119bbcb82824c6887f4f706cb619034a2244021b007099cd52397496e65875a99af1edf32406aa54b5805c0929316a9095489170d7cd3' \
     && echo "$dotnet_sha512  dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /usr/share/dotnet \

@@ -5,7 +5,7 @@ FROM $REPO:5.0-alpine{{OS_VERSION_NUMBER}}{{ARCH_TAG_SUFFIX}}
 ENV ASPNET_VERSION 5.0.0-preview.6.20312.15
 
 RUN wget -O aspnetcore.tar.gz https://dotnetcli.azureedge.net/dotnet/aspnetcore/Runtime/$ASPNET_VERSION/aspnetcore-runtime-$ASPNET_VERSION-linux-musl-{{ARCH_SHORT}}.tar.gz \
-    && aspnetcore_sha512='157b73945e553947147622382fdacbc0649523c383a3bd5a1c65bfbb026e6fead39ee1260af41f1a8c574be0f87d462f18bca540c594422c1f8b4f09e52b2c93' \
+    && aspnetcore_sha512='{{if ARCH_SHORT = "arm64":2fc1bafb3963ee7f0a250f980434d47b81ce7bad41311eda1391c1d72591bb18b3e49f8aca1331fc4ae2a928d840c4b56809579bf835a427ac4a4208e3ce6136^else:157b73945e553947147622382fdacbc0649523c383a3bd5a1c65bfbb026e6fead39ee1260af41f1a8c574be0f87d462f18bca540c594422c1f8b4f09e52b2c93}}' \
     && echo "$aspnetcore_sha512  aspnetcore.tar.gz" | sha512sum -c - \
     && tar -ozxf aspnetcore.tar.gz -C /usr/share/dotnet ./shared/Microsoft.AspNetCore.App \
     && rm aspnetcore.tar.gz

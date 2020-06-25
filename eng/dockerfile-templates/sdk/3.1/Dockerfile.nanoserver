@@ -9,9 +9,9 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 
 RUN `
     # Retrieve .NET Core SDK
-    $dotnet_sdk_version = '3.1.301'; `
+    $dotnet_sdk_version = '{{VARIABLES[cat("sdk-", MAJOR_MINOR_VERSION, "-version")]}}'; `
     Invoke-WebRequest -OutFile dotnet.zip https://dotnetcli.azureedge.net/dotnet/Sdk/$dotnet_sdk_version/dotnet-sdk-$dotnet_sdk_version-win-x64.zip; `
-    $dotnet_sha512 = '99a124d19503036bcedefffb348fa23476e60cdabfcb8e9cddc6545f05f57d8d2cf5bc7ff9b42039387a15328471c5bd47e50c5ea129fbd418a6e0fa9607bb17'; `
+    $dotnet_sha512 = '{{VARIABLES[cat("sdk-", MAJOR_MINOR_VERSION, "-windows-", ARCH_SHORT, "-sha")]}}'; `
     if ((Get-FileHash dotnet.zip -Algorithm sha512).Hash -ne $dotnet_sha512) { `
         Write-Host 'CHECKSUM VERIFICATION FAILED!'; `
         exit 1; `
@@ -20,9 +20,9 @@ RUN `
     Remove-Item -Force dotnet.zip; `
     `
     # Install PowerShell global tool
-    $powershell_version = '7.0.2'; `
+    $powershell_version = '{{VARIABLES[cat("powershell-", MAJOR_MINOR_VERSION, "-version")]}}'; `
     Invoke-WebRequest -OutFile PowerShell.Windows.x64.$powershell_version.nupkg https://pwshtool.blob.core.windows.net/tool/$powershell_version/PowerShell.Windows.x64.$powershell_version.nupkg; `
-    $powershell_sha512 = '7bc1f801c5475bb74150e0470614dfa9f5176c1780fa9664f0043cc4dc9d3d01cd2c963b18726b72e38b68a303a46a7f757f9253ee70ddd7cb2504b3639c4a6f'; `
+    $powershell_sha512 = '{{VARIABLES[cat("powershell-", MAJOR_MINOR_VERSION, "-windows-", ARCH_SHORT, "-sha")]}}'; `
     if ((Get-FileHash PowerShell.Windows.x64.$powershell_version.nupkg -Algorithm sha512).Hash -ne $powershell_sha512) { `
         Write-Host 'CHECKSUM VERIFICATION FAILED!'; `
         exit 1; `

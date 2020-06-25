@@ -23,9 +23,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install .NET Core SDK
-RUN dotnet_sdk_version=3.1.301 \
+RUN dotnet_sdk_version={{VARIABLES[cat("sdk-", MAJOR_MINOR_VERSION, "-version")]}} \
     && curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$dotnet_sdk_version/dotnet-sdk-$dotnet_sdk_version-linux-{{ARCH_SHORT}}.tar.gz \
-    && dotnet_sha512='{{if ARCH_SHORT = "arm":732364b93caaa94ee96dfe24ed42e63ae59862afd0691760557c22019c67139f92db28cc5e730618a630c45a96b2468676867345e54ae93004567b470edf5f47^elif ARCH_SHORT = "arm64":834dc5829730ea7abcf5adfca5557458d5de534597933dbdcec99abbd7eff00f3e1d0084b7f3572de80b4d333dee6d32cffa2d1ead022faad3957c95e5a920a0^else:dd39931df438b8c1561f9a3bdb50f72372e29e5706d3fb4c490692f04a3d55f5acc0b46b8049bc7ea34dedba63c71b4c64c57032740cbea81eef1dce41929b4e}}' \
+    && dotnet_sha512='{{VARIABLES[cat("sdk-", MAJOR_MINOR_VERSION, "-linux-", ARCH_SHORT, "-sha")]}}' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /usr/share/dotnet \
     && tar -ozxf dotnet.tar.gz -C /usr/share/dotnet \
@@ -35,9 +35,9 @@ RUN dotnet_sdk_version=3.1.301 \
     && dotnet help
 
 # Install PowerShell global tool
-RUN powershell_version=7.0.2 \
+RUN powershell_version={{VARIABLES[cat("powershell-", MAJOR_MINOR_VERSION, "-version")]}} \
     && curl -SL --output PowerShell.Linux.{{ARCH_NUPKG}}.$powershell_version.nupkg https://pwshtool.blob.core.windows.net/tool/$powershell_version/PowerShell.Linux.{{ARCH_NUPKG}}.$powershell_version.nupkg \
-    && powershell_sha512='{{if ARCH_SHORT = "arm":3b7d2509f83ffdb57758c3265603fc19e3d18e300f2f8157acdcc41255864469df99be24f317b1f1fb428abf92aa63bf612c828d969ec4ba371ade7910de7e79^elif ARCH_SHORT = "arm64":aed16185878d1c3afda9aecb9d2cc38a09edcad028ec2fc77794393c75160ffd58e62bc8dba5f6f0bd0d94cd00a28ea3dcd1f2d21f55a30e709148dbf04c60d4^else:35ccceb6b72e92028a9a4fb83ca43951433dbb700d7e13ef27c69f15d96e3dcfea91cb0ed616baeb00a173edb0050d1596d826c86b4b6cf327ae182198c1f7fd}}' \
+    && powershell_sha512='{{VARIABLES[cat("powershell-", MAJOR_MINOR_VERSION, "-alpine-", ARCH_SHORT, "-sha")]}}' \
     && echo "$powershell_sha512  PowerShell.Linux.{{ARCH_NUPKG}}.$powershell_version.nupkg" | sha512sum -c - \
     && mkdir -p /usr/share/powershell \
     && dotnet tool install --add-source / --tool-path /usr/share/powershell --version $powershell_version PowerShell.Linux.{{ARCH_NUPKG}} \

@@ -12,7 +12,7 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
 ENV DOTNET_SDK_VERSION {{VARIABLES[cat("sdk-", MAJOR_MINOR_VERSION, "-version")]}}
 
 RUN wget -O dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-musl-x64.tar.gz \
-    && dotnet_sha512='{{VARIABLES[cat("sdk-", MAJOR_MINOR_VERSION, "-alpine-", ARCH_SHORT, "-sha")]}}' \
+    && dotnet_sha512='{{VARIABLES[cat("sdk|", MAJOR_MINOR_VERSION, "|linux-musl|x64|sha")]}}' \
     && echo "$dotnet_sha512  dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /usr/share/dotnet \
     && tar -C /usr/share/dotnet -xzf dotnet.tar.gz \

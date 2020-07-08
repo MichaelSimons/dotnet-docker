@@ -15,6 +15,13 @@ namespace Dotnet.Docker
     /// </summary>
     public class ProductVersionUpdater : FileRegexUpdater
     {
+        public static string GetProductVersion(string productName, string dockerfileVersion, string variables)
+        {
+            string versionVariableName = $"{productName}-{dockerfileVersion}-version";
+            string versionValueGroupName = "versionValue";
+            Match match = Regex.Match(variables, $"\"{versionVariableName}\": \"(?<{versionValueGroupName}>[\\d]+.[\\d]+.[\\d]+(-[\\w]+(.[\\d]+)*)?)\"");
+            return match.Groups[versionValueGroupName].Value;
+        }
         private string _productName;
 
         public ProductVersionUpdater(string productName, string dockerfileVersion, string repoRoot) : base()

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using LibGit2Sharp;
 using Microsoft.DotNet.VersionTools;
@@ -31,6 +32,11 @@ namespace Dotnet.Docker
                 Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
 
                 Options.Parse(args);
+
+                if (Options.ProductVersions.ContainsKey("sdk") && Options.DockerfileVersion == "2.1")
+                {
+                    Options.ProductVersions["lzma"] = Options.ProductVersions["sdk"];
+                }
 
                 IEnumerable<IDependencyInfo> buildInfos = GetBuildInfo();
                 DependencyUpdateResults updateResults = UpdateFiles(buildInfos);
@@ -263,47 +269,17 @@ namespace Dotnet.Docker
         private static IEnumerable<IDependencyUpdater> GetUpdaters(
             string dockerfileVersion, IEnumerable<IDependencyInfo> buildInfos)
         {
-            string[] dockerfileTemplates = Directory.GetFiles(
-                    Path.Combine(RepoRoot, "eng", "dockerfile-templates"),
-                    "Dockerfile.*",
-                    SearchOption.AllDirectories)
-                .Where(dockerfile => dockerfile.Contains($"{Path.DirectorySeparatorChar}{Options.DockerfileVersion}{Path.DirectorySeparatorChar}"))
-                .ToArray();
-
-            Trace.TraceInformation("Updating the following Dockerfile Templates:");
-            Trace.TraceInformation(string.Join(Environment.NewLine, dockerfileTemplates));
-
-            // // NOTE: The order in which the updaters are returned/invoked is important as there are cross dependencies 
-            // // (e.g. sha updater requires the version numbers to be updated within the Dockerfiles)
-            // List<IDependencyUpdater> manifestBasedUpdaters = new List<IDependencyUpdater>();
-            // CreateManifestUpdater(manifestBasedUpdaters, "Sdk", buildInfos, SdkBuildInfoName);
-            // CreateManifestUpdater(manifestBasedUpdaters, "Runtime", buildInfos, RuntimeBuildInfoName);
-            // CreateManifestUpdater(manifestBasedUpdaters, "Monitor", buildInfos, MonitorBuildInfoName);
-            // manifestBasedUpdaters.Add(new ReadMeUpdater(RepoRoot));
-            // DockerfileUpdater(RepoRoot)
-
-            // return CreateDockerfileVariableUpdaters(dockerfiles, buildInfos, VariableHelper.DotnetSdkVersionName, SdkBuildInfoName)
-            //     .Concat(CreateDockerfileVariableUpdaters(
-            //         dockerfiles, buildInfos, VariableHelper.AspNetVersionName, AspNetCoreBuildInfoName))
-            //     .Concat(CreateDockerfileVariableUpdaters(
-            //         dockerfiles, buildInfos, VariableHelper.AspNetCoreVersionName, AspNetCoreBuildInfoName))
-            //     .Concat(CreateDockerfileVariableUpdaters(
-            //         dockerfiles, buildInfos, VariableHelper.DotnetVersionName, RuntimeBuildInfoName))
-            //     .Concat(CreateDockerfileVariableUpdaters(
-            //         dockerfiles, buildInfos, VariableHelper.MonitorVersionName, MonitorBuildInfoName))
-            //     //.Concat(dockerfiles.Select(path => DockerfileShaUpdater.CreateProductShaUpdater(path, Options)))
-            //     //.Concat(dockerfiles.Select(path => DockerfileShaUpdater.CreateLzmaShaUpdater(path, Options)))
-            //     .Concat(manifestBasedUpdaters);
-
             return Options.ProductVersions
                 .Select(kvp => (IDependencyUpdater)new ProductVersionUpdater(kvp.Key, Options.DockerfileVersion, RepoRoot))
                 .Concat(Options.ProductVersions.Select(kvp => new ProductVersionTagUpdater(kvp.Key, Options.DockerfileVersion, RepoRoot)))
-                .Concat(Options.ProductVersions.Select(kvp => new ProductVersionTagUpdater(kvp.Key, Options.DockerfileVersion, RepoRoot)))
+                .Concat(Options.ProductVersions.SelectMany(kvp => 
+                    DockerfileShaUpdater.CreateUpdaters(kvp.Key, Options.DockerfileVersion, RepoRoot, Options)))
                 .Concat(new IDependencyUpdater[]
                 {
-                    // new DockerfileUpdater(RepoRoot),
-                    // new ReadMeUpdater(RepoRoot)
+                    new DockerfileUpdater(RepoRoot),
+                    //new ReadMeUpdater(RepoRoot)
                 });
         }
+
     }
 }

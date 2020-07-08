@@ -21,7 +21,7 @@ RUN apt-get update \
 
 # Install .NET Core SDK
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-{{ARCH_SHORT}}.tar.gz \
-    && dotnet_sha512='{{VARIABLES[cat("sdk-", MAJOR_MINOR_VERSION, "-linux-", ARCH_SHORT, "-sha")]}}' \
+    && dotnet_sha512='{{VARIABLES[cat("sdk|", MAJOR_MINOR_VERSION, "|linux|", ARCH_SHORT, "|sha")]}}' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /usr/share/dotnet \
     && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./packs ./sdk ./templates ./LICENSE.txt ./ThirdPartyNotices.txt \
@@ -32,7 +32,7 @@ RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$
 # Install PowerShell global tool
 RUN powershell_version={{VARIABLES[cat("powershell-", MAJOR_MINOR_VERSION, "-version")]}} \
     && curl -SL --output PowerShell.Linux.{{ARCH_NUPKG}}.$powershell_version.nupkg https://pwshtool.blob.core.windows.net/tool/$powershell_version/PowerShell.Linux.{{ARCH_NUPKG}}.$powershell_version.nupkg \
-    && powershell_sha512='{{VARIABLES[cat("powershell-", MAJOR_MINOR_VERSION, "-alpine-", ARCH_SHORT, "-sha")]}}' \
+    && powershell_sha512='{{VARIABLES[cat("powershell|", MAJOR_MINOR_VERSION, "|Linux|", ARCH_NUPKG, "|sha")]}}' \
     && echo "$powershell_sha512  PowerShell.Linux.{{ARCH_NUPKG}}.$powershell_version.nupkg" | sha512sum -c - \
     && mkdir -p /usr/share/powershell \
     && dotnet tool install --add-source / --tool-path /usr/share/powershell --version $powershell_version PowerShell.Linux.{{ARCH_NUPKG}} \

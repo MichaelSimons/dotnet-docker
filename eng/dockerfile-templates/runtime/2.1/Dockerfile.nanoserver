@@ -9,7 +9,7 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 ENV DOTNET_VERSION {{VARIABLES[cat("runtime-", MAJOR_MINOR_VERSION, "-version")]}}
 
 RUN Invoke-WebRequest -OutFile dotnet.zip https://dotnetcli.azureedge.net/dotnet/Runtime/$Env:DOTNET_VERSION/dotnet-runtime-$Env:DOTNET_VERSION-win-x64.zip; `
-    $dotnet_sha512 = '{{VARIABLES[cat("runtime-", MAJOR_MINOR_VERSION, "-windows-", ARCH_SHORT, "-sha")]}}'; `
+    $dotnet_sha512 = '{{VARIABLES[cat("runtime|", MAJOR_MINOR_VERSION, "|win|x64|sha")]}}'; `
     if ((Get-FileHash dotnet.zip -Algorithm sha512).Hash -ne $dotnet_sha512) { `
         Write-Host 'CHECKSUM VERIFICATION FAILED!'; `
         exit 1; `

@@ -7,7 +7,7 @@ FROM $SDK_REPO:3.1-alpine3.12 AS installer
 # Install .NET Monitor
 ENV DOTNET_MONITOR_VERSION={{VARIABLES[cat("monitor-", MAJOR_MINOR_VERSION, "-version")]}}
 RUN wget -O dotnet-monitor.$DOTNET_MONITOR_VERSION.nupkg https://dotnetcli.azureedge.net/dotnet/diagnostics/monitor5.0/dotnet-monitor.$DOTNET_MONITOR_VERSION.nupkg \
-    && dotnetmonitor_sha512='{{VARIABLES[cat("monitor-", MAJOR_MINOR_VERSION, "-alpine-", ARCH_SHORT, "-sha")]}}' \
+    && dotnetmonitor_sha512='{{VARIABLES[cat("monitor|", MAJOR_MINOR_VERSION, "|sha")]}}' \
     && echo "$dotnetmonitor_sha512  dotnet-monitor.$DOTNET_MONITOR_VERSION.nupkg" | sha512sum -c - \
     && dotnet tool install dotnet-monitor --tool-path /app --add-source / --version $DOTNET_MONITOR_VERSION --no-cache \
     # To reduce image size, remove the copy of the nupkg under the tools.

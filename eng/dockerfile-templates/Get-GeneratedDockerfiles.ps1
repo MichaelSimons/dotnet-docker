@@ -8,5 +8,13 @@ if ($Paths) {
     $pathArgs = " --path " + ($Paths -join " --path ")
 }
 
-& $PSScriptRoot/common/Invoke-ImageBuilder.ps1 `
-    -ImageBuilderArgs "generateDockerfiles --architecture * --os-type *$pathArgs"
+$repoRoot = (Get-Item "$PSScriptRoot").Parent.Parent.FullName
+
+$onDockerfilesGenerated = {
+    param($ContainerName)
+    Exec "docker cp ${ContainerName}:/repo/src $repoRoot"
+}
+
+& $PSScriptRoot/../common/Invoke-ImageBuilder.ps1 `
+    -ImageBuilderArgs "generateDockerfiles --architecture * --os-type *$pathArgs" `
+    -OnCommandExecuted $onDockerfilesGenerated

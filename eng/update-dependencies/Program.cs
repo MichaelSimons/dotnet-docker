@@ -19,11 +19,6 @@ namespace Dotnet.Docker
 {
     public static class Program
     {
-        private const string AspNetCoreBuildInfoName = "aspnet";
-        private const string MonitorBuildInfoName = "monitor";
-        private const string RuntimeBuildInfoName = "core-setup";
-        private const string SdkBuildInfoName = "cli";
-
         private static Options Options { get; } = new Options();
         private static string RepoRoot { get; } = Directory.GetCurrentDirectory();
 
@@ -72,48 +67,15 @@ namespace Dotnet.Docker
 
         private static DependencyUpdateResults UpdateFiles(IEnumerable<IDependencyInfo> buildInfos)
         {
-            // NOTE: dotnet-monitor will diverge its versioning in the future; this will need to be refactored in
-            // some way to allow updaters to be collected for each product's individual version.
-            string buildVersion = buildInfos.GetBuildVersion(RuntimeBuildInfoName) ??
-                buildInfos.GetBuildVersion(SdkBuildInfoName) ??
-                buildInfos.GetBuildVersion(AspNetCoreBuildInfoName) ??
-                buildInfos.GetBuildVersion(MonitorBuildInfoName);
-            string productVersion = buildVersion.Split('-')[0];
-            string dockerfileVersion = productVersion.Substring(0, productVersion.LastIndexOf('.'));
-            IEnumerable<IDependencyUpdater> updaters = GetUpdaters(dockerfileVersion, buildInfos);
+            IEnumerable<IDependencyUpdater> updaters = GetUpdaters(Options.DockerfileVersion, buildInfos);
 
             return DependencyUpdateUtils.Update(updaters, buildInfos);
         }
 
-        private static IEnumerable<IDependencyInfo> GetBuildInfo()
-        {
-            List<IDependencyInfo> buildInfo = new List<IDependencyInfo>();
-
-            if (Options.AspnetVersion != null)
-            {
-                buildInfo.Add(CreateDependencyBuildInfo(AspNetCoreBuildInfoName, Options.AspnetVersion));
-            }
-            if (Options.MonitorVersion != null)
-            {
-                buildInfo.Add(CreateDependencyBuildInfo(MonitorBuildInfoName, Options.MonitorVersion));
-            }
-            if (Options.RuntimeVersion != null)
-            {
-                buildInfo.Add(CreateDependencyBuildInfo(RuntimeBuildInfoName, Options.RuntimeVersion));
-            }
-            if (Options.SdkVersion != null)
-            {
-                buildInfo.Add(CreateDependencyBuildInfo(SdkBuildInfoName, Options.SdkVersion));
-            }
-
-            return buildInfo;
-        }
-
-        private static IDependencyInfo CreateDependencyBuildInfo(string name, IEnumerable<BuildIdentity> builds)
-        {
-            BuildIdentity buildId = builds.First(build => string.Equals(build.Name, name, StringComparison.OrdinalIgnoreCase));
-            return CreateDependencyBuildInfo(name, buildId.ProductVersion);
-        }
+        private static IEnumerable<IDependencyInfo> GetBuildInfo() =>
+            Options.ProductVersions
+                .Select(kvp => CreateDependencyBuildInfo(kvp.Key, kvp.Value))
+                .ToArray();
 
         private static IDependencyInfo CreateDependencyBuildInfo(string name, string version)
         {
@@ -298,77 +260,50 @@ namespace Dotnet.Docker
             }
         }
 
-        private static string GetBuildVersion(this IEnumerable<IDependencyInfo> buildInfos, string name)
-        {
-            return buildInfos.FirstOrDefault(bi => bi.SimpleName == name)?.SimpleVersion;
-        }
-
         private static IEnumerable<IDependencyUpdater> GetUpdaters(
             string dockerfileVersion, IEnumerable<IDependencyInfo> buildInfos)
         {
-            string[] dockerfiles = Directory.GetFiles(
-                    Path.Combine(RepoRoot, "src"), 
-                    "Dockerfile", 
+            string[] dockerfileTemplates = Directory.GetFiles(
+                    Path.Combine(RepoRoot, "eng", "dockerfile-templates"),
+                    "Dockerfile.*",
                     SearchOption.AllDirectories)
-                .Where(dockerfile => dockerfile.Contains($"{Path.DirectorySeparatorChar}{dockerfileVersion}{Path.DirectorySeparatorChar}"))
+                .Where(dockerfile => dockerfile.Contains($"{Path.DirectorySeparatorChar}{Options.DockerfileVersion}{Path.DirectorySeparatorChar}"))
                 .ToArray();
 
-            Trace.TraceInformation("Updating the following Dockerfiles:");
-            Trace.TraceInformation(string.Join(Environment.NewLine, dockerfiles));
+            Trace.TraceInformation("Updating the following Dockerfile Templates:");
+            Trace.TraceInformation(string.Join(Environment.NewLine, dockerfileTemplates));
 
-            // NOTE: The order in which the updaters are returned/invoked is important as there are cross dependencies 
-            // (e.g. sha updater requires the version numbers to be updated within the Dockerfiles)
-            List<IDependencyUpdater> manifestBasedUpdaters = new List<IDependencyUpdater>();
-            CreateManifestUpdater(manifestBasedUpdaters, "sdk", buildInfos, SdkBuildInfoName);
-            CreateManifestUpdater(manifestBasedUpdaters, "dotnet", buildInfos, RuntimeBuildInfoName);
-            CreateManifestUpdater(manifestBasedUpdaters, "monitor", buildInfos, MonitorBuildInfoName);
-            manifestBasedUpdaters.Add(new ReadMeUpdater(RepoRoot));
+            // // NOTE: The order in which the updaters are returned/invoked is important as there are cross dependencies 
+            // // (e.g. sha updater requires the version numbers to be updated within the Dockerfiles)
+            // List<IDependencyUpdater> manifestBasedUpdaters = new List<IDependencyUpdater>();
+            // CreateManifestUpdater(manifestBasedUpdaters, "Sdk", buildInfos, SdkBuildInfoName);
+            // CreateManifestUpdater(manifestBasedUpdaters, "Runtime", buildInfos, RuntimeBuildInfoName);
+            // CreateManifestUpdater(manifestBasedUpdaters, "Monitor", buildInfos, MonitorBuildInfoName);
+            // manifestBasedUpdaters.Add(new ReadMeUpdater(RepoRoot));
+            // DockerfileUpdater(RepoRoot)
 
-            return CreateDockerfileVariableUpdaters(dockerfiles, buildInfos, VariableHelper.DotnetSdkVersionName, SdkBuildInfoName)
-                .Concat(CreateDockerfileVariableUpdaters(
-                    dockerfiles, buildInfos, VariableHelper.AspNetVersionName, AspNetCoreBuildInfoName))
-                .Concat(CreateDockerfileVariableUpdaters(
-                    dockerfiles, buildInfos, VariableHelper.AspNetCoreVersionName, AspNetCoreBuildInfoName))
-                .Concat(CreateDockerfileVariableUpdaters(
-                    dockerfiles, buildInfos, VariableHelper.DotnetVersionName, RuntimeBuildInfoName))
-                .Concat(CreateDockerfileVariableUpdaters(
-                    dockerfiles, buildInfos, VariableHelper.MonitorVersionName, MonitorBuildInfoName))
-                .Concat(dockerfiles.Select(path => DockerfileShaUpdater.CreateProductShaUpdater(path, Options)))
-                .Concat(dockerfiles.Select(path => DockerfileShaUpdater.CreateLzmaShaUpdater(path, Options)))
-                .Concat(manifestBasedUpdaters);
-        }
+            // return CreateDockerfileVariableUpdaters(dockerfiles, buildInfos, VariableHelper.DotnetSdkVersionName, SdkBuildInfoName)
+            //     .Concat(CreateDockerfileVariableUpdaters(
+            //         dockerfiles, buildInfos, VariableHelper.AspNetVersionName, AspNetCoreBuildInfoName))
+            //     .Concat(CreateDockerfileVariableUpdaters(
+            //         dockerfiles, buildInfos, VariableHelper.AspNetCoreVersionName, AspNetCoreBuildInfoName))
+            //     .Concat(CreateDockerfileVariableUpdaters(
+            //         dockerfiles, buildInfos, VariableHelper.DotnetVersionName, RuntimeBuildInfoName))
+            //     .Concat(CreateDockerfileVariableUpdaters(
+            //         dockerfiles, buildInfos, VariableHelper.MonitorVersionName, MonitorBuildInfoName))
+            //     //.Concat(dockerfiles.Select(path => DockerfileShaUpdater.CreateProductShaUpdater(path, Options)))
+            //     //.Concat(dockerfiles.Select(path => DockerfileShaUpdater.CreateLzmaShaUpdater(path, Options)))
+            //     .Concat(manifestBasedUpdaters);
 
-        private static IEnumerable<IDependencyUpdater> CreateDockerfileVariableUpdaters(
-            string[] dockerfilePaths, IEnumerable<IDependencyInfo> buildInfos, string variableName, string buildInfoName)
-        {
-            return GetBuildVersion(buildInfos, buildInfoName) == null
-                ? Enumerable.Empty<IDependencyUpdater>()
-                : dockerfilePaths.Select(path => CreateDockerfileVariableUpdater(path, variableName, buildInfoName));
-        }
-
-        private static IDependencyUpdater CreateDockerfileVariableUpdater(
-            string dockerfilePath, string variableName, string buildInfoName)
-        {
-            return new FileRegexReleaseUpdater()
-            {
-                Path = dockerfilePath,
-                BuildInfoName = buildInfoName,
-                Regex = VariableHelper.GetValueRegex(variableName),
-                VersionGroupName = VariableHelper.ValueGroupName
-            };
-        }
-
-        private static void CreateManifestUpdater(
-            List<IDependencyUpdater> manifestUpdaters,
-            string imageVariantName,
-            IEnumerable<IDependencyInfo> buildInfos,
-            string buildInfoName)
-        {
-            string version = GetBuildVersion(buildInfos, buildInfoName);
-            if (version != null)
-            {
-                manifestUpdaters.Add(new ManifestUpdater(imageVariantName, version, RepoRoot));
-            }
+            return Options.ProductVersions
+                .Select(kvp => (IDependencyUpdater)new ProductVersionUpdater(kvp.Key, Options.DockerfileVersion, RepoRoot))
+                .Concat(Options.ProductVersions.Select(kvp => new ProductVersionTagUpdater(kvp.Key, Options.DockerfileVersion, RepoRoot)))
+                .Concat(Options.ProductVersions.Select(kvp => new ProductVersionTagUpdater(kvp.Key, Options.DockerfileVersion, RepoRoot)))
+                .Concat(new IDependencyUpdater[]
+                {
+                    // new DockerfileUpdater(RepoRoot),
+                    // new ReadMeUpdater(RepoRoot)
+                });
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Dotnet.Docker
         public static IEnumerable<IDependencyUpdater> CreateUpdaters(
             string product, string dockerfileVersion, string repoRoot, Options options)
         {
-            string versionsPath = System.IO.Path.Combine(repoRoot, "versions.json");
+            string versionsPath = System.IO.Path.Combine(repoRoot, "manifest.versions.json");
             string versions = File.ReadAllText(versionsPath);
             Regex shaVariableRegex = new Regex($"\"(?<shaVariable>{Regex.Escape(product)}\\|{Regex.Escape(dockerfileVersion)}.*\\|sha)\":");
             return shaVariableRegex.Matches(versions)

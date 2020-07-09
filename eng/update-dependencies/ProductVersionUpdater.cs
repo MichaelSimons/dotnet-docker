@@ -32,7 +32,7 @@ namespace Dotnet.Docker
 
             Trace.TraceInformation($"Updating {versionVariableName}");
 
-            Path = System.IO.Path.Combine(repoRoot, "versions.json");
+            Path = System.IO.Path.Combine(repoRoot, "manifest.versions.json");
             Regex = new Regex($"\"{versionVariableName}\": \"(?<{versionValueGroupName}>[\\d]+.[\\d]+.[\\d]+(-[\\w]+(.[\\d]+)*)?)\"");
             VersionGroupName = versionValueGroupName;
         }

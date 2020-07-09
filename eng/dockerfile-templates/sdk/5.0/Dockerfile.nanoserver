@@ -1,7 +1,7 @@
 # escape=`
 
 ARG REPO=mcr.microsoft.com/dotnet/core/aspnet
-ARG DOTNET_SDK_VERSION={{VARIABLES[cat("sdk-", MAJOR_MINOR_VERSION, "-version")]}}
+ARG DOTNET_SDK_VERSION={{VARIABLES[cat("sdk-", DOCKERFILE_VERSION, "-version")]}}
 
 # Installer image
 FROM mcr.microsoft.com/windows/servercore:{{OS_VERSION_NUMBER}} AS installer
@@ -12,7 +12,7 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 RUN `
     # Retrieve .NET Core SDK
     Invoke-WebRequest -OutFile dotnet.zip https://dotnetcli.azureedge.net/dotnet/Sdk/$Env:DOTNET_SDK_VERSION/dotnet-sdk-$Env:DOTNET_SDK_VERSION-win-x64.zip; `
-    $dotnet_sha512 = '{{VARIABLES[cat("sdk|", MAJOR_MINOR_VERSION, "|win|x64|sha")]}}'; `
+    $dotnet_sha512 = '{{VARIABLES[cat("sdk|", DOCKERFILE_VERSION, "|win|x64|sha")]}}'; `
     if ((Get-FileHash dotnet.zip -Algorithm sha512).Hash -ne $dotnet_sha512) { `
         Write-Host 'CHECKSUM VERIFICATION FAILED!'; `
         exit 1; `
@@ -21,9 +21,9 @@ RUN `
     Remove-Item -Force dotnet.zip; `
     `
     # Install PowerShell global tool
-    $powershell_version = '{{VARIABLES[cat("powershell-", MAJOR_MINOR_VERSION, "-version")]}}'; `
+    $powershell_version = '{{VARIABLES[cat("powershell-", DOCKERFILE_VERSION, "-version")]}}'; `
     Invoke-WebRequest -OutFile PowerShell.Windows.x64.$powershell_version.nupkg https://pwshtool.blob.core.windows.net/tool/$powershell_version/PowerShell.Windows.x64.$powershell_version.nupkg; `
-    $powershell_sha512 = '{{VARIABLES[cat("powershell|", MAJOR_MINOR_VERSION, "|Windows|x64|sha")]}}'; `
+    $powershell_sha512 = '{{VARIABLES[cat("powershell|", DOCKERFILE_VERSION, "|Windows|x64|sha")]}}'; `
     if ((Get-FileHash PowerShell.Windows.x64.$powershell_version.nupkg -Algorithm sha512).Hash -ne $powershell_sha512) { `
         Write-Host 'CHECKSUM VERIFICATION FAILED!'; `
         exit 1; `

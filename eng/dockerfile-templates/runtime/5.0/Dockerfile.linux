@@ -1,5 +1,5 @@
 ARG REPO=mcr.microsoft.com/dotnet/core/runtime-deps
-ARG DOTNET_VERSION={{VARIABLES[cat("runtime-", MAJOR_MINOR_VERSION, "-version")]}}
+ARG DOTNET_VERSION={{VARIABLES[cat("runtime-", DOCKERFILE_VERSION, "-version")]}}
 
 # Installer image
 FROM {{ARCH_VERSIONED}}/buildpack-deps:{{OS_VERSION_BASE}}-curl as installer
@@ -7,7 +7,7 @@ ARG DOTNET_VERSION
 
 # Retrieve .NET Core
 RUN curl -SL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Runtime/$DOTNET_VERSION/dotnet-runtime-$DOTNET_VERSION-linux-{{ARCH_SHORT}}.tar.gz \
-    && dotnet_sha512='{{VARIABLES[cat("runtime|", MAJOR_MINOR_VERSION, "|linux|", ARCH_SHORT, "|sha")]}}' \
+    && dotnet_sha512='{{VARIABLES[cat("runtime|", DOCKERFILE_VERSION, "|linux|", ARCH_SHORT, "|sha")]}}' \
     && echo "$dotnet_sha512 dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /dotnet \
     && tar -ozxf dotnet.tar.gz -C /dotnet \

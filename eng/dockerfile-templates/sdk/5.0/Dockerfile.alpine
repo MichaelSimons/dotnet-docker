@@ -4,7 +4,7 @@ FROM $REPO:5.0-{{OS_VERSION}}
 ENV \
     # Unset ASPNETCORE_URLS from aspnet base image
     ASPNETCORE_URLS= \
-    DOTNET_SDK_VERSION={{VARIABLES[cat("sdk-", DOCKERFILE_VERSION, "-version")]}} \
+    DOTNET_SDK_VERSION={{VARIABLES["sdk|5.0|version"]}} \
     # Disable the invariant mode (set in base image)
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
     # Enable correct mode for dotnet watch (only mode supported in a container)
@@ -21,7 +21,7 @@ RUN apk add --no-cache \
 
 # Install .NET Core SDK
 RUN wget -O dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-linux-musl-x64.tar.gz \
-    && dotnet_sha512='{{VARIABLES[cat("sdk|", DOCKERFILE_VERSION, "|linux-musl|x64|sha")]}}' \
+    && dotnet_sha512='{{VARIABLES["sdk|5.0|linux-musl|x64|sha"]}}' \
     && echo "$dotnet_sha512  dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p /usr/share/dotnet \
     && tar -C /usr/share/dotnet -oxzf dotnet.tar.gz ./packs ./sdk ./templates ./LICENSE.txt ./ThirdPartyNotices.txt \
@@ -30,9 +30,9 @@ RUN wget -O dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/$DOTNET_SDK
     && dotnet help
 
 # Install PowerShell global tool
-RUN powershell_version={{VARIABLES[cat("powershell-", DOCKERFILE_VERSION, "-version")]}} \
+RUN powershell_version={{VARIABLES["powershell|5.0|version"]}} \
     && wget -O PowerShell.Linux.Alpine.$powershell_version.nupkg https://pwshtool.blob.core.windows.net/tool/$powershell_version/PowerShell.Linux.Alpine.$powershell_version.nupkg \
-    && powershell_sha512='{{VARIABLES[cat("powershell|", DOCKERFILE_VERSION, "|Linux.Alpine|sha")]}}' \
+    && powershell_sha512='{{VARIABLES["powershell|5.0|Linux.Alpine|sha"]}}' \
     && echo "$powershell_sha512  PowerShell.Linux.Alpine.$powershell_version.nupkg" | sha512sum -c - \
     && mkdir -p /usr/share/powershell \
     && dotnet tool install --add-source / --tool-path /usr/share/powershell --version $powershell_version PowerShell.Linux.Alpine \

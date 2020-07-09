@@ -32,7 +32,7 @@ namespace Dotnet.Docker
         private Options _options;
         private string _versions;
         private static readonly Dictionary<string, string> s_shaCache = new Dictionary<string, string>();
-private static readonly Dictionary<string, Dictionary<string, string>> s_releaseChecksumCache =
+        private static readonly Dictionary<string, Dictionary<string, string>> s_releaseChecksumCache =
              new Dictionary<string, Dictionary<string, string>>();
         private Dictionary<string, string> urls = new Dictionary<string, string>{
             {"powershell", "https://pwshtool.blob.core.windows.net/tool/$VERSION/PowerShell.$OS.$ARCH.$VERSION.nupkg"},

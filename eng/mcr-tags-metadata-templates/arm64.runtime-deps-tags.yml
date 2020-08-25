@@ -1,4 +1,4 @@
-$(McrTagsYmlRepo:runtime-deps)
+$(McrTagsYmlRepo:arm64v8.runtime-deps)
 $(McrTagsYmlTagGroup:5.0-buster-slim)
 $(McrTagsYmlTagGroup:5.0-alpine3.12)
 $(McrTagsYmlTagGroup:5.0-focal)

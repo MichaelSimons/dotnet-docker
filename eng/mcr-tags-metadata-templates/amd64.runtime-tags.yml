@@ -1,4 +1,4 @@
-$(McrTagsYmlRepo:aspnet)
+$(McrTagsYmlRepo:ramd64.untime)
 $(McrTagsYmlTagGroup:5.0-buster-slim)
     customSubTableTitle: Linux
 $(McrTagsYmlTagGroup:5.0-alpine3.12)

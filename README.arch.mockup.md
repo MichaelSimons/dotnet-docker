@@ -105,6 +105,34 @@ Simple Tags | Dockerfile | OS Version
 | 5.0-ubuntu | | Ubuntu &#9660;
 | &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-focal, 5.0-focal | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime), [armv8](https://hub.docker.com/_/microsoft-armv8-dotnet-runtime), [arm32v7](https://hub.docker.com/_/microsoft-arm32v7-dotnet-runtime) | Ubuntu 20.04
 
+# Full Tag Listing Option 7
+
+| Tags | OS Version | Arch / Dockerfile
+| -----------| -----------| -------------
+| 5.0.0, 5.0, latest | Multi-platform |
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-buster-slim, 5.0-buster-slim | Debian 10 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime), [armv8](https://hub.docker.com/_/microsoft-armv8-dotnet-runtime), [arm32v7](https://hub.docker.com/_/microsoft-arm32v7-dotnet-runtime)
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-nanoserver-2004, 5.0-nanoserver-2004 | Windows Server, version 2004 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime)
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-nanoserver-1909, 5.0-nanoserver-1909 | Windows Server, version 1909 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime)
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-nanoserver-1903, 5.0-nanoserver-1903 | Windows Server, version 1903 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime)
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-nanoserver-1809, 5.0-nanoserver-1809 | Windows Server 2019 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime)
+| 5.0-alpine | Alpine |
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-alpine3.12, 5.0-alpine3.12 | Alpine 3.12 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime), [armv8](https://hub.docker.com/_/microsoft-armv8-dotnet-runtime), [arm32v7](https://hub.docker.com/_/microsoft-arm32v7-dotnet-runtime)
+| 5.0-ubuntu | Ubuntu |
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-focal, 5.0-focal | Ubuntu 20.04 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime), [armv8](https://hub.docker.com/_/microsoft-armv8-dotnet-runtime), [arm32v7](https://hub.docker.com/_/microsoft-arm32v7-dotnet-runtime)
+
+# Full Tag Listing Option 8
+
+| Tags | OS Version | Arch / Dockerfile
+| -----------| -----------| -------------
+| 5.0.0, 5.0, latest | Multi-platform |
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-buster-slim, 5.0-buster-slim | Debian 10 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime), [armv8](https://hub.docker.com/_/microsoft-armv8-dotnet-runtime), [arm32v7](https://hub.docker.com/_/microsoft-arm32v7-dotnet-runtime)
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-nanoserver-2004, 5.0-nanoserver-2004 | Windows Server, version 2004 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime)
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-nanoserver-1909, 5.0-nanoserver-1909 | Windows Server, version 1909 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime)
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-nanoserver-1903, 5.0-nanoserver-1903 | Windows Server, version 1903 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime)
+| &nbsp;&nbsp;&nbsp;&nbsp;&#8627;&nbsp;&nbsp;&nbsp;5.0.0-nanoserver-1809, 5.0-nanoserver-1809 | Windows Server 2019 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime)
+| 5.0.0-alpine3.12, 5.0-alpine3.12, 5.0-alpine | Alpine 3.12 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime), [armv8](https://hub.docker.com/_/microsoft-armv8-dotnet-runtime), [arm32v7](https://hub.docker.com/_/microsoft-arm32v7-dotnet-runtime)
+| 5.0.0-focal, 5.0-focal | Ubuntu 20.04 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime), [armv8](https://hub.docker.com/_/microsoft-armv8-dotnet-runtime), [arm32v7](https://hub.docker.com/_/microsoft-arm32v7-dotnet-runtime)
+
 You can retrieve a list of all available tags for dotnet/runtime at https://mcr.microsoft.com/v2/dotnet/runtime/tags/list.
 
 <br/><br/>

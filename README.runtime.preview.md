@@ -129,6 +129,7 @@ Simple Tags | Dockerfile | OS Version
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.0.0-preview.7-alpine3.12, 5.0-alpine3.12 | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime), [armv8](https://hub.docker.com/_/microsoft-armv8-dotnet-runtime), [arm32v7](https://hub.docker.com/_/microsoft-arm32v7-dotnet-runtime) | Alpine 3.12
 | 5.0-focal | | Ubuntu 20.04
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.0.0-preview.7-focal | [amd64](https://hub.docker.com/_/microsoft-amd64-dotnet-runtime), [armv8](https://hub.docker.com/_/microsoft-armv8-dotnet-runtime), [arm32v7](https://hub.docker.com/_/microsoft-arm32v7-dotnet-runtime) | Ubuntu 20.04
+
 You can retrieve a list of all available tags for dotnet/runtime at https://mcr.microsoft.com/v2/dotnet/runtime/tags/list.
 
 # Support

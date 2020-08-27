@@ -1,7 +1,4 @@
-$(McrTagsYmlRepo:runtime)
-$(McrTagsYmlTagGroup:5.0-buster-slim)
-$(McrTagsYmlTagGroup:5.0-alpine3.12)
-$(McrTagsYmlTagGroup:5.0-focal)
+$(McrTagsYmlRepo:winamd64.runtime)
 $(McrTagsYmlTagGroup:5.0-nanoserver-2004)
 $(McrTagsYmlTagGroup:5.0-nanoserver-1909)
 $(McrTagsYmlTagGroup:5.0-nanoserver-1903)

@@ -22,21 +22,32 @@ if (!$Branch) {
 
 $gitRepo = "https://github.com/dotnet/dotnet-docker"
 
+# & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
+#     dotnet/$($coreRepoName)runtime-deps README.runtime-deps.md manifest.json $gitRepo $Branch
+# & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
+#     dotnet/$($repoName)runtime-deps README.runtime-deps.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
+# & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
+#     dotnet/$($coreRepoName)runtime README.runtime.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
+# & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
+#     dotnet/$($repoName)runtime README.runtime.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
+# & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
+#     dotnet/$($coreRepoName)aspnet README.aspnet.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
+# & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
+#     dotnet/$($repoName)aspnet README.aspnet.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
+# & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
+#     dotnet/$($coreRepoName)sdk README.sdk.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
+# & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
+#     dotnet/$($repoName)sdk README.sdk.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
+# & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
+#     dotnet/core/samples README.samples.md manifest.samples.json $gitRepo -ReuseImageBuilderImage
+
 & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
-    dotnet/$($coreRepoName)runtime-deps README.runtime-deps.md manifest.json $gitRepo $Branch
+    dotnet/$($repoName)runtime README.runtime.preview.md manifest.json $gitRepo $Branch
 & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
-    dotnet/$($repoName)runtime-deps README.runtime-deps.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
+    amd64/dotnet/$($repoName)runtime README.amd64.runtime.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
 & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
-    dotnet/$($coreRepoName)runtime README.runtime.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
+    winamd64/dotnet/$($repoName)runtime README.winamd64.runtime.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
 & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
-    dotnet/$($repoName)runtime README.runtime.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
+    arm64v8/dotnet/$($repoName)runtime README.arm64v8.runtime.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
 & $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
-    dotnet/$($coreRepoName)aspnet README.aspnet.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
-& $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
-    dotnet/$($repoName)aspnet README.aspnet.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
-& $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
-    dotnet/$($coreRepoName)sdk README.sdk.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
-& $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
-    dotnet/$($repoName)sdk README.sdk.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage
-& $PSScriptRoot/common/Invoke-ReadmeGeneration.ps1 `
-    dotnet/core/samples README.samples.md manifest.samples.json $gitRepo -ReuseImageBuilderImage
+    arm32v7/dotnet/$($repoName)runtime README.arm32v7.runtime.preview.md manifest.json $gitRepo $Branch -ReuseImageBuilderImage

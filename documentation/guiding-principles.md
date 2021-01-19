@@ -31,7 +31,7 @@ These are the guiding principles for the content, tagging and production of the 
 
 ## Image Tagging
 
-The .NET image tags strive to align with the tagging practices utilized by the [Official Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official).  The [Tagging Guidelines](tagging-guidelines.md) describe this in detail.
+The .NET image tags strive to align with the tagging practices utilized by the [Official Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official).  The [Tagging Ploicy](tagging-policy.md) describes this in detail.
 
 ## Engineering
 

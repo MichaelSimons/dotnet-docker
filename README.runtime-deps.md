@@ -77,7 +77,7 @@ Tags | Dockerfile | OS Version
 6.0.32-cbl-mariner2.0-distroless-amd64, 6.0-cbl-mariner2.0-distroless-amd64, 6.0.32-cbl-mariner2.0-distroless, 6.0-cbl-mariner2.0-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime-deps/6.0/cbl-mariner2.0-distroless/amd64/Dockerfile) | CBL-Mariner 2.0
 6.0.32-focal-amd64, 6.0-focal-amd64, 6.0.32-focal, 6.0-focal | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime-deps/6.0/focal/amd64/Dockerfile) | Ubuntu 20.04
 
-##### .NET 9 Preview Tags
+##### Linux amd64 .NET 9 Preview Tags
 Tags | Dockerfile | OS Version
 -----------| -------------| -------------
 9.0.0-preview.6-bookworm-slim-amd64, 9.0-preview-bookworm-slim-amd64, 9.0.0-preview.6, 9.0.0-preview.6-bookworm-slim, 9.0-preview, 9.0-preview-bookworm-slim | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime-deps/8.0/bookworm-slim/amd64/Dockerfile) | Debian 12
@@ -118,7 +118,7 @@ Tags | Dockerfile | OS Version
 6.0.32-cbl-mariner2.0-distroless-arm64v8, 6.0-cbl-mariner2.0-distroless-arm64v8, 6.0.32-cbl-mariner2.0-distroless, 6.0-cbl-mariner2.0-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime-deps/6.0/cbl-mariner2.0-distroless/arm64v8/Dockerfile) | CBL-Mariner 2.0
 6.0.32-focal-arm64v8, 6.0-focal-arm64v8, 6.0.32-focal, 6.0-focal | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime-deps/6.0/focal/arm64v8/Dockerfile) | Ubuntu 20.04
 
-##### .NET 9 Preview Tags
+##### Linux arm64 .NET 9 Preview Tags
 Tags | Dockerfile | OS Version
 -----------| -------------| -------------
 9.0.0-preview.6-bookworm-slim-arm64v8, 9.0-preview-bookworm-slim-arm64v8, 9.0.0-preview.6, 9.0.0-preview.6-bookworm-slim, 9.0-preview, 9.0-preview-bookworm-slim | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime-deps/8.0/bookworm-slim/arm64v8/Dockerfile) | Debian 12
@@ -151,7 +151,7 @@ Tags | Dockerfile | OS Version
 6.0.32-jammy-chiseled-extra-arm32v7, 6.0-jammy-chiseled-extra-arm32v7, 6.0.32-jammy-chiseled-extra, 6.0-jammy-chiseled-extra | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime-deps/6.0/jammy-chiseled-extra/arm32v7/Dockerfile) | Ubuntu 22.04
 6.0.32-focal-arm32v7, 6.0-focal-arm32v7, 6.0.32-focal, 6.0-focal | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime-deps/6.0/focal/arm32v7/Dockerfile) | Ubuntu 20.04
 
-##### .NET 9 Preview Tags
+##### Linux arm32 .NET 9 Preview Tags
 Tags | Dockerfile | OS Version
 -----------| -------------| -------------
 9.0.0-preview.6-bookworm-slim-arm32v7, 9.0-preview-bookworm-slim-arm32v7, 9.0.0-preview.6, 9.0.0-preview.6-bookworm-slim, 9.0-preview, 9.0-preview-bookworm-slim | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/runtime-deps/8.0/bookworm-slim/arm32v7/Dockerfile) | Debian 12

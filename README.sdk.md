@@ -76,7 +76,7 @@ Tags | Dockerfile | OS Version
 6.0.424-cbl-mariner2.0-amd64, 6.0-cbl-mariner2.0-amd64, 6.0.424-cbl-mariner2.0, 6.0-cbl-mariner2.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/6.0/cbl-mariner2.0/amd64/Dockerfile) | CBL-Mariner 2.0
 6.0.424-focal-amd64, 6.0-focal-amd64, 6.0.424-focal, 6.0-focal | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/6.0/focal/amd64/Dockerfile) | Ubuntu 20.04
 
-##### .NET 9 Preview Tags
+##### Linux amd64 .NET 9 Preview Tags
 Tags | Dockerfile | OS Version
 -----------| -------------| -------------
 9.0.100-preview.6-bookworm-slim-amd64, 9.0-preview-bookworm-slim-amd64, 9.0.100-preview.6-bookworm-slim, 9.0-preview-bookworm-slim, 9.0.100-preview.6, 9.0-preview | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/9.0/bookworm-slim/amd64/Dockerfile) | Debian 12
@@ -101,7 +101,7 @@ Tags | Dockerfile | OS Version
 6.0.424-cbl-mariner2.0-arm64v8, 6.0-cbl-mariner2.0-arm64v8, 6.0.424-cbl-mariner2.0, 6.0-cbl-mariner2.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/6.0/cbl-mariner2.0/arm64v8/Dockerfile) | CBL-Mariner 2.0
 6.0.424-focal-arm64v8, 6.0-focal-arm64v8, 6.0.424-focal, 6.0-focal | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/6.0/focal/arm64v8/Dockerfile) | Ubuntu 20.04
 
-##### .NET 9 Preview Tags
+##### Linux arm64 .NET 9 Preview Tags
 Tags | Dockerfile | OS Version
 -----------| -------------| -------------
 9.0.100-preview.6-bookworm-slim-arm64v8, 9.0-preview-bookworm-slim-arm64v8, 9.0.100-preview.6-bookworm-slim, 9.0-preview-bookworm-slim, 9.0.100-preview.6, 9.0-preview | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/9.0/bookworm-slim/arm64v8/Dockerfile) | Debian 12
@@ -123,7 +123,7 @@ Tags | Dockerfile | OS Version
 6.0.424-jammy-arm32v7, 6.0-jammy-arm32v7, 6.0.424-jammy, 6.0-jammy | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/6.0/jammy/arm32v7/Dockerfile) | Ubuntu 22.04
 6.0.424-focal-arm32v7, 6.0-focal-arm32v7, 6.0.424-focal, 6.0-focal | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/6.0/focal/arm32v7/Dockerfile) | Ubuntu 20.04
 
-##### .NET 9 Preview Tags
+##### Linux arm32 .NET 9 Preview Tags
 Tags | Dockerfile | OS Version
 -----------| -------------| -------------
 9.0.100-preview.6-bookworm-slim-arm32v7, 9.0-preview-bookworm-slim-arm32v7, 9.0.100-preview.6-bookworm-slim, 9.0-preview-bookworm-slim, 9.0.100-preview.6, 9.0-preview | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/9.0/bookworm-slim/arm32v7/Dockerfile) | Debian 12
@@ -136,7 +136,7 @@ Tag | Dockerfile
 8.0.303-nanoserver-ltsc2022, 8.0-nanoserver-ltsc2022 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/8.0/nanoserver-ltsc2022/amd64/Dockerfile)
 6.0.424-nanoserver-ltsc2022, 6.0-nanoserver-ltsc2022, 6.0.424, 6.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/6.0/nanoserver-ltsc2022/amd64/Dockerfile)
 
-##### .NET 9 Preview Tags
+##### Nano Server 2022 amd64 .NET 9 Preview Tags
 Tag | Dockerfile
 ---------| ---------------
 9.0.100-preview.6-nanoserver-ltsc2022, 9.0-preview-nanoserver-ltsc2022 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/9.0/nanoserver-ltsc2022/amd64/Dockerfile)
@@ -147,7 +147,7 @@ Tag | Dockerfile
 8.0.303-windowsservercore-ltsc2022, 8.0-windowsservercore-ltsc2022 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/8.0/windowsservercore-ltsc2022/amd64/Dockerfile)
 6.0.424-windowsservercore-ltsc2022, 6.0-windowsservercore-ltsc2022 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/6.0/windowsservercore-ltsc2022/amd64/Dockerfile)
 
-##### .NET 9 Preview Tags
+##### Windows Server Core 2022 .NET 9 Preview Tags
 Tag | Dockerfile
 ---------| ---------------
 9.0.100-preview.6-windowsservercore-ltsc2022, 9.0-preview-windowsservercore-ltsc2022 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/9.0/windowsservercore-ltsc2022/amd64/Dockerfile)
@@ -158,7 +158,7 @@ Tag | Dockerfile
 8.0.303-nanoserver-1809, 8.0-nanoserver-1809 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/8.0/nanoserver-1809/amd64/Dockerfile)
 6.0.424-nanoserver-1809, 6.0-nanoserver-1809, 6.0.424, 6.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/6.0/nanoserver-1809/amd64/Dockerfile)
 
-##### .NET 9 Preview Tags
+##### Nano Server, version 1809 amd64 .NET 9 Preview Tags
 Tag | Dockerfile
 ---------| ---------------
 9.0.100-preview.6-nanoserver-1809, 9.0-preview-nanoserver-1809 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/9.0/nanoserver-1809/amd64/Dockerfile)
@@ -169,7 +169,7 @@ Tag | Dockerfile
 8.0.303-windowsservercore-ltsc2019, 8.0-windowsservercore-ltsc2019 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/8.0/windowsservercore-ltsc2019/amd64/Dockerfile)
 6.0.424-windowsservercore-ltsc2019, 6.0-windowsservercore-ltsc2019 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/6.0/windowsservercore-ltsc2019/amd64/Dockerfile)
 
-##### .NET 9 Preview Tags
+##### Windows Server Core 2019 .NET 9 Preview Tags
 Tag | Dockerfile
 ---------| ---------------
 9.0.100-preview.6-windowsservercore-ltsc2019, 9.0-preview-windowsservercore-ltsc2019 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/9.0/windowsservercore-ltsc2019/amd64/Dockerfile)

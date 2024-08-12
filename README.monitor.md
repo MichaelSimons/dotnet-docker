@@ -61,7 +61,7 @@ Tags | Dockerfile | OS Version
 6.3.7-cbl-mariner-amd64, 6.3-cbl-mariner-amd64, 6-cbl-mariner-amd64, 6.3.7-cbl-mariner, 6.3-cbl-mariner, 6-cbl-mariner | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/monitor/6.3/cbl-mariner/amd64/Dockerfile) | CBL-Mariner 2.0
 6.3.7-cbl-mariner-distroless-amd64, 6.3-cbl-mariner-distroless-amd64, 6-cbl-mariner-distroless-amd64, 6.3.7-cbl-mariner-distroless, 6.3-cbl-mariner-distroless, 6-cbl-mariner-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/monitor/6.3/cbl-mariner-distroless/amd64/Dockerfile) | CBL-Mariner 2.0
 
-##### .NET Monitor Preview Tags
+##### Linux amd64 .NET Monitor Preview Tags
 Tags | Dockerfile | OS Version
 -----------| -------------| -------------
 9.0.0-preview.6-amd64, 9.0-preview-amd64, 9.0.0-preview.6, 9.0-preview, 9-preview | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/monitor/9.0/azurelinux-distroless/amd64/Dockerfile) | Azure Linux 3.0
@@ -76,7 +76,7 @@ Tags | Dockerfile | OS Version
 6.3.7-cbl-mariner-arm64v8, 6.3-cbl-mariner-arm64v8, 6-cbl-mariner-arm64v8, 6.3.7-cbl-mariner, 6.3-cbl-mariner, 6-cbl-mariner | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/monitor/6.3/cbl-mariner/arm64v8/Dockerfile) | CBL-Mariner 2.0
 6.3.7-cbl-mariner-distroless-arm64v8, 6.3-cbl-mariner-distroless-arm64v8, 6-cbl-mariner-distroless-arm64v8, 6.3.7-cbl-mariner-distroless, 6.3-cbl-mariner-distroless, 6-cbl-mariner-distroless | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/monitor/6.3/cbl-mariner-distroless/arm64v8/Dockerfile) | CBL-Mariner 2.0
 
-##### .NET Monitor Preview Tags
+##### Linux arm64 .NET Monitor Preview Tags
 Tags | Dockerfile | OS Version
 -----------| -------------| -------------
 9.0.0-preview.6-arm64v8, 9.0-preview-arm64v8, 9.0.0-preview.6, 9.0-preview, 9-preview | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/monitor/9.0/azurelinux-distroless/arm64v8/Dockerfile) | Azure Linux 3.0

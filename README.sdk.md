@@ -81,7 +81,7 @@ Tags | Dockerfile | OS Version
 6.0.425-focal-amd64, 6.0-focal-amd64, 6.0.425-focal, 6.0-focal | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/6.0/focal/amd64/Dockerfile) | Ubuntu 20.04
 
 #### .NET 9 Preview Tags
-
+s
 Tags | Dockerfile | OS Version
 -----------| -------------| -------------
 9.0.100-preview.7-bookworm-slim-amd64, 9.0-preview-bookworm-slim-amd64, 9.0.100-preview.7-bookworm-slim, 9.0-preview-bookworm-slim, 9.0.100-preview.7, 9.0-preview | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/9.0/bookworm-slim/amd64/Dockerfile) | Debian 12

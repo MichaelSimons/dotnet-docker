@@ -1,2 +1,2 @@
-eng/readme-templates/*
-eng/common/*
+eng/readme-templates/**
+eng/common/**

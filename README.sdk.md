@@ -90,7 +90,7 @@ Tags | Dockerfile | OS Version
 9.0.100-preview.7-azurelinux3.0-amd64, 9.0-preview-azurelinux3.0-amd64, 9.0.100-preview.7-azurelinux3.0, 9.0-preview-azurelinux3.0 | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/9.0/azurelinux3.0/amd64/Dockerfile) | Azure Linux 3.0
 
 ### Linux arm64 Tags
-s
+
 Tags | Dockerfile | OS Version
 -----------| -------------| -------------
 8.0.401-bookworm-slim-arm64v8, 8.0-bookworm-slim-arm64v8, 8.0.401-bookworm-slim, 8.0-bookworm-slim, 8.0.401, 8.0, latest | [Dockerfile](https://github.com/dotnet/dotnet-docker/blob/main/src/sdk/8.0/bookworm-slim/arm64v8/Dockerfile) | Debian 12

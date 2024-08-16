@@ -1,4 +1,7 @@
 default: true
+ignore:
+  - eng/readme-templates/**
+  - eng/common/**
 MD013: false # line length
 MD024: # no-duplicate-heading Multiple headings with the same content
   siblings_only: true

@@ -1,8 +1,9 @@
 name: 'Check Markdown Links'
+
 on:
   pull_request:
-    paths: ['**.md']
-    branches: ['main']
+    paths:
+      - "**/*.md"
 
 permissions:
   pull-requests: read

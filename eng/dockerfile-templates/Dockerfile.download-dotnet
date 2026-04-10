@@ -49,7 +49,8 @@
     set useFinalVersion to VARIABLES[cat(baseUrlType, "|", dotnetVersion, "|use-final-version")] = "true" ^
     set fileVersion to when(isStableVersion, productVersion, when(useFinalVersion, cat(productVersion, ".final"), buildVersion)) ^
 
-    set archiveExtension to when(isWindows, ".zip", ".tar.gz") ^
+    set useTarball to dotnetVersion != "8.0" && dotnetVersion != "9.0" && dotnetVersion != "10.0" ^
+    set archiveExtension to when(isWindows && !useTarball, ".zip", ".tar.gz") ^
 
     if (product = "runtime"):{{
         set downloadPath to cat("/Runtime/", buildVersion, "/dotnet-runtime-", fileVersion, "-", platform, "-", ARCH_SHORT, archiveExtension)
